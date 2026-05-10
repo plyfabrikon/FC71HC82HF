@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini po polsku | Polskie prompty do obrazów</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;1,200;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─────────────────────────────────────────── -->
+  <header class="navbar" id="navbar">
+    <div class="logo">
+      <a href="#">GeminiPoPolsku</a>
+    </div>
+
+    <nav class="nav-links">
+      <ul>
+        <li><a href="#start" class="active">HOME</a></li>
+        <li><a href="#weryfikacja">WERYFIKACJA</a></li>
+        <li><a href="#zasady">ZASADY</a></li>
+        <li><a href="#prompty">PROMPTY</a></li>
+        <li><a href="#generator">GENERATOR</a></li>
+        <li><a href="#zrodla">ŹRÓDŁA</a></li>
+      </ul>
+    </nav>
+
+    <div class="social-media">
+      <a href="https://ai.google.dev/gemini-api/docs/image-generation" target="_blank" title="Gemini API"><i class="fas fa-external-link-alt"></i></a>
+      <a href="https://aistudio.google.com" target="_blank" title="AI Studio"><i class="fas fa-flask"></i></a>
+      <a href="https://cloud.google.com/vertex-ai" target="_blank" title="Vertex AI"><i class="fas fa-cloud"></i></a>
+    </div>
+  </header>
+
+  <!-- ─── HERO ───────────────────────────────────────────── -->
+  <main id="start">
+    <section class="hero-section">
+      <div class="hero-overlay"></div>
+
+      <!-- decorative SVG lines -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <line x1="-20" y1="260" x2="460" y2="0"   stroke="#fff" stroke-opacity="0.022" stroke-width="0.6"/>
+        <line x1="120" y1="900" x2="780" y2="120"  stroke="#fff" stroke-opacity="0.018" stroke-width="0.6"/>
+        <line x1="580" y1="900" x2="1200" y2="200" stroke="#fff" stroke-opacity="0.022" stroke-width="0.6"/>
+        <line x1="980" y1="900" x2="1480" y2="300" stroke="#fff" stroke-opacity="0.016" stroke-width="0.6"/>
+        <line x1="1180" y1="0"  x2="1440" y2="340" stroke="#fff" stroke-opacity="0.028" stroke-width="0.6"/>
+        <line x1="1280" y1="0"  x2="1440" y2="220" stroke="#fff" stroke-opacity="0.018" stroke-width="0.6"/>
+        <line x1="0"    y1="220" x2="1440" y2="220" stroke="#fff" stroke-opacity="0.012" stroke-width="0.5"/>
+        <line x1="0"    y1="520" x2="1440" y2="520" stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+        <line x1="0"    y1="740" x2="1440" y2="740" stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+        <circle cx="840"  cy="130" r="1.2" fill="#fff" fill-opacity="0.1"/>
+        <circle cx="920"  cy="200" r="0.8" fill="#fff" fill-opacity="0.08"/>
+        <circle cx="780"  cy="260" r="1"   fill="#fff" fill-opacity="0.07"/>
+        <circle cx="1080" cy="110" r="0.7" fill="#fff" fill-opacity="0.09"/>
+        <circle cx="1160" cy="260" r="1.1" fill="#fff" fill-opacity="0.06"/>
+        <circle cx="350"  cy="160" r="0.9" fill="#fff" fill-opacity="0.06"/>
+        <circle cx="440"  cy="360" r="0.7" fill="#fff" fill-opacity="0.05"/>
+        <circle cx="200"  cy="460" r="0.8" fill="#fff" fill-opacity="0.05"/>
+        <circle cx="1300" cy="600" r="0.9" fill="#fff" fill-opacity="0.06"/>
+      </svg>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">Polskie prompty &nbsp;·&nbsp; Gemini Image &nbsp;·&nbsp; Stan: 10 maja 2026</p>
+        <h1>Polskie prompty<br>do obrazów w Gemini.</h1>
+        <p>Bringing imagination to life.</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#prompty">Przejdź do promptów</a>
+          <a class="btn btn-secondary" href="#weryfikacja">Status weryfikacji</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ABOUT ──────────────────────────────────────────── -->
+    <section class="section" id="weryfikacja">
+      <svg class="section-bg" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="abg" cx="12%" cy="50%" r="40%"><stop offset="0%" stop-color="#fff" stop-opacity="0.02"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
+        <rect width="1440" height="400" fill="url(#abg)"/>
+        <line x1="0" y1="100" x2="1440" y2="100" stroke="#fff" stroke-opacity="0.012" stroke-width="0.5"/>
+        <line x1="0" y1="200" x2="1440" y2="200" stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+        <line x1="0" y1="300" x2="1440" y2="300" stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+        <line x1="160" y1="0" x2="0" y2="400"   stroke="#fff" stroke-opacity="0.014" stroke-width="0.5"/>
+        <line x1="340" y1="0" x2="180" y2="400"  stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+      </svg>
+      <div class="shell">
+        <p class="section-eyebrow">— O tej stronie</p>
+        <h2 class="section-title">Gemini obsługuje język polski.<br>Imagen już nie.</h2>
+        <p class="section-desc">Nie zgaduję i nie opieram się na „podobno". Rozdzieliłem fakty potwierdzone wprost przez Google od logicznych wniosków z dokumentacji.</p>
+
+        <div class="about-grid">
+          <div class="about-left">
+            <h3>Co tu jest potwierdzone, a czego nie sprawdziłem live.</h3>
+            <p>Każda z poniższych kart pokazuje źródło informacji. Nie piszę „działa" bez potwierdzenia — mówię wprost, co wynika z dokumentacji, a co byłoby do zweryfikowania live testem API.</p>
+          </div>
+          <div class="about-right">
+            <div class="service-card">
+              <h4>Generowanie obrazów</h4>
+              <p>Gemini może generować i edytować obrazy konwersacyjnie z tekstu, obrazów lub obu naraz — oficjalnie potwierdzone przez Google.</p>
+            </div>
+            <div class="service-card">
+              <h4>Edycja i retusze</h4>
+              <p>Zmiana tła, stylu i oświetlenia przy zachowaniu twarzy i tożsamości postaci. Gotowe prompty do każdego przypadku.</p>
+            </div>
+            <div class="service-card">
+              <h4>Generator promptów</h4>
+              <p>Wybierz temat, styl, kadr i światło — dostaniesz gotowy prompt po polsku do wklejenia bezpośrednio w Gemini.</p>
+            </div>
+            <div class="service-card">
+              <h4>Zasady pisania</h4>
+              <p>Jak konstruować polskie prompty żeby dawały stabilne wyniki: scena, forma, ochrona tożsamości i tryb edycji.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-strip">
+          <div class="status-item">
+            <div class="status-badge"><span class="status-dot dot-ok"></span>Oficjalnie potwierdzone</div>
+            <h4>Gemini obsługuje polski</h4>
+            <p>Vertex AI wymienia `pl` jako oficjalnie wspierany przez wszystkie modele Gemini.</p>
+          </div>
+          <div class="status-item">
+            <div class="status-badge"><span class="status-dot dot-ok"></span>Oficjalnie potwierdzone</div>
+            <h4>Gemini generuje obrazy</h4>
+            <p>Oficjalny przewodnik Gemini API potwierdza generowanie i przetwarzanie obrazów z tekstu.</p>
+          </div>
+          <div class="status-item">
+            <div class="status-badge"><span class="status-dot dot-stop"></span>Oficjalnie wykluczone</div>
+            <h4>Imagen — nie po polsku</h4>
+            <p>Dokumentacja Imagen wprost: model obsługuje obecnie tylko prompty po angielsku.</p>
+          </div>
+          <div class="status-item">
+            <div class="status-badge"><span class="status-dot dot-warn"></span>Brak testu live</div>
+            <h4>Brak klucza API tutaj</h4>
+            <p>Brak `GEMINI_API_KEY` w tym środowisku — nie wykonano realnego wywołania modelu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ZASADY ─────────────────────────────────────────── -->
+    <section class="section" id="zasady">
+      <svg class="section-bg" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="rbg" cx="88%" cy="20%" r="45%"><stop offset="0%" stop-color="#fff" stop-opacity="0.018"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
+        <rect width="1440" height="500" fill="url(#rbg)"/>
+        <line x1="1200" y1="0"    x2="1440" y2="340" stroke="#fff" stroke-opacity="0.025" stroke-width="0.5"/>
+        <line x1="1300" y1="0"    x2="1440" y2="200" stroke="#fff" stroke-opacity="0.018" stroke-width="0.5"/>
+        <line x1="0"    y1="440"  x2="200"  y2="500" stroke="#fff" stroke-opacity="0.016" stroke-width="0.5"/>
+        <line x1="0"    y1="150"  x2="1440" y2="150" stroke="#fff" stroke-opacity="0.012" stroke-width="0.5"/>
+        <line x1="0"    y1="300"  x2="1440" y2="300" stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+      </svg>
+      <div class="shell">
+        <p class="section-eyebrow">— Jak pisać po polsku</p>
+        <h2 class="section-title">Zasady, które zwiększają szansę na dobry wynik.</h2>
+        <p class="section-desc">Skoro idziemy w polski, warto pisać go naprawdę czysto: pełne zdania, konkretne rzeczowniki i jasne ograniczenia.</p>
+
+        <div class="rules-grid">
+          <div class="rule-card">
+            <span class="rule-tag">1. Najpierw scena</span>
+            <h4>Powiedz, co ma być na obrazie</h4>
+            <p>Zacznij od głównego tematu, miejsca, pory dnia i sytuacji. Dopiero potem dodaj styl i technikę.</p>
+            <div class="example-box">Stwórz realistyczny portret młodej projektantki stojącej w wąskiej uliczce w Lizbonie o zachodzie słońca.</div>
+          </div>
+          <div class="rule-card">
+            <span class="rule-tag">2. Potem forma</span>
+            <h4>Dopisz światło, kadr i klimat</h4>
+            <p>W drugiej części promptu doprecyzuj: editorial, fotografia studyjna, plakat, bokeh, 50 mm, miękkie światło.</p>
+            <div class="example-box">Miękkie złote światło, estetyka magazynu modowego, płytka głębia ostrości, obiektyw 50 mm.</div>
+          </div>
+          <div class="rule-card">
+            <span class="rule-tag">3. Chroń tożsamość</span>
+            <h4>Przy edycji nazwij, co ma zostać</h4>
+            <p>Jeśli przerabiasz obraz, nie pisz tylko „zmień tło". Dopisz, co ma zostać bez zmian: twarz, poza, logo.</p>
+            <div class="example-box">Zachowaj twarz, fryzurę, pozę i ubranie bez zmian. Zmień wyłącznie tło i oświetlenie.</div>
+          </div>
+          <div class="rule-card">
+            <span class="rule-tag">4. Tekst w cudzysłowie</span>
+            <h4>Tekst w obrazie podawaj dokładnie</h4>
+            <p>Jeśli chcesz napis w kadrze, użyj krótkiej frazy i zaznacz, że ma być czytelna i zapisana dokładnie tak.</p>
+            <div class="example-box">Dodaj nagłówek „MIASTO / PO ZMROKU" dokładnie w takiej formie, czytelny i wyśrodkowany.</div>
+          </div>
+          <div class="rule-card">
+            <span class="rule-tag">5. Rób iteracje</span>
+            <h4>Jedna poprawka na turę</h4>
+            <p>Gemini działa konwersacyjnie — zamiast jednego ogromnego promptu lepiej zrobić trzy krótsze korekty.</p>
+            <div class="example-box">Krok 1: ocieplij światło. Krok 2: dodaj neon. Krok 3: wyostrz tylko produkt.</div>
+          </div>
+          <div class="rule-card">
+            <span class="rule-tag">6. Mów prosto</span>
+            <h4>Polski ma być naturalny, nie maszynowy</h4>
+            <p>Gemini lepiej zniesie normalne polskie zdania niż sztuczny zlepek keywordów przetłumaczonych z angielskiego.</p>
+            <div class="example-box">Stwórz eleganckie zdjęcie produktu na kamiennym postumencie w miękkim świetle poranka.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PROMPTY ────────────────────────────────────────── -->
+    <section class="section" id="prompty">
+      <svg class="section-bg" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="pbg" cx="90%" cy="10%" r="45%"><stop offset="0%" stop-color="#fff" stop-opacity="0.016"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
+        <rect width="1440" height="700" fill="url(#pbg)"/>
+        <line x1="1220" y1="0"   x2="1440" y2="380" stroke="#fff" stroke-opacity="0.022" stroke-width="0.5"/>
+        <line x1="1320" y1="0"   x2="1440" y2="200" stroke="#fff" stroke-opacity="0.016" stroke-width="0.5"/>
+        <line x1="0"    y1="620" x2="280"  y2="700" stroke="#fff" stroke-opacity="0.014" stroke-width="0.5"/>
+        <circle cx="50"  cy="50"  r="0.8" fill="#fff" fill-opacity="0.04"/>
+        <circle cx="110" cy="50"  r="0.8" fill="#fff" fill-opacity="0.04"/>
+        <circle cx="170" cy="50"  r="0.8" fill="#fff" fill-opacity="0.04"/>
+        <circle cx="50"  cy="110" r="0.8" fill="#fff" fill-opacity="0.03"/>
+        <circle cx="110" cy="110" r="0.8" fill="#fff" fill-opacity="0.03"/>
+        <circle cx="170" cy="110" r="0.8" fill="#fff" fill-opacity="0.03"/>
+        <circle cx="50"  cy="170" r="0.8" fill="#fff" fill-opacity="0.03"/>
+        <circle cx="110" cy="170" r="0.8" fill="#fff" fill-opacity="0.03"/>
+        <circle cx="1360" cy="600" r="0.9" fill="#fff" fill-opacity="0.05"/>
+        <circle cx="1400" cy="520" r="0.6" fill="#fff" fill-opacity="0.04"/>
+      </svg>
+      <div class="shell">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:0">
+          <div>
+            <p class="section-eyebrow">— Polski bank promptów</p>
+            <h2 class="section-title">Gotowe prompty po polsku do kopiowania.</h2>
+            <p class="section-desc">Każdy prompt brzmi naturalnie po polsku i jest precyzyjny dla modelu. Prompty są pisane pod Gemini Image, nie pod Imagen.</p>
+          </div>
+        </div>
+
+        <div class="prompts-toolbar">
+          <div class="filter-group">
+            <button class="filter-btn active" data-filter="all">Wszystkie</button>
+            <button class="filter-btn" data-filter="foto">Foto</button>
+            <button class="filter-btn" data-filter="edycja">Edycja</button>
+            <button class="filter-btn" data-filter="produkt">Produkt</button>
+            <button class="filter-btn" data-filter="tekst">Tekst</button>
+            <button class="filter-btn" data-filter="story">Storyboard</button>
+          </div>
+          <span class="toolbar-note">Kliknij „Kopiuj", aby wkleić prompt prosto do Gemini.</span>
+        </div>
+
+        <div class="prompts-grid">
+
+          <article class="prompt-card" data-tags="foto">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Foto</span>
+            </div>
+            <h4>Portret editorial</h4>
+            <p class="desc">Naturalny polski prompt do realistycznego portretu w stylu magazynowym.</p>
+            <div class="prompt-box">Stwórz realistyczny portret młodej projektantki mody stojącej w wąskiej, jasnej uliczce w Lizbonie późnym popołudniem. Swobodna poza, spokojna pewność siebie, lniany strój w jasnych kolorach, miękkie złote światło, naturalna faktura skóry, płytka głębia ostrości, estetyka sesji do magazynu modowego, subtelne ziarno filmu.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="edycja foto">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Edycja</span>
+            </div>
+            <h4>Zmiana tła bez ruszania osoby</h4>
+            <p class="desc">Dobry prompt do przeróbek zdjęć profilowych i brandingowych.</p>
+            <div class="prompt-box">Zachowaj osobę dokładnie bez zmian: twarz, fryzurę, pozę i ubranie. Zmień wyłącznie tło na elegancką, nowoczesną przestrzeń coworkingową o wschodzie słońca. Dodaj miękkie ciepłe światło wpadające przez duże okna i zachowaj fotorealistyczny charakter zdjęcia.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="produkt">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Produkt</span>
+            </div>
+            <h4>Hero shot produktu</h4>
+            <p class="desc">Pod landing page, reklamę lub premium packshot.</p>
+            <div class="prompt-box">Stwórz eleganckie zdjęcie produktu przedstawiające matowy czarny głośnik bezprzewodowy ustawiony na rzeźbiarskim kamiennym postumencie. Kontrolowane światło studyjne, połysk tylko na krawędziach, głębokie ale czyste cienie, minimalistyczne tło, estetyka luksusowej kampanii technologicznej, wysoka szczegółowość materiałów.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="produkt edycja">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Produkt + Edycja</span>
+            </div>
+            <h4>Nowe tło dla packshotu</h4>
+            <p class="desc">Do osadzenia istniejącego produktu w ciekawszej scenie.</p>
+            <div class="prompt-box">Użyj przesłanego produktu dokładnie jako referencji. Zachowaj kształt, kolor, etykietę i proporcje bez zmian. Umieść go w eleganckiej scenie inspirowanej pustynnym luksusem: piaskowiec, miękkie boczne światło, delikatne cienie i dużo wolnej przestrzeni na nagłówek strony internetowej.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="tekst">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Tekst</span>
+            </div>
+            <h4>Poster z krótkim hasłem</h4>
+            <p class="desc">Do plakatów, coverów i zapowiedzi wydarzeń.</p>
+            <div class="prompt-box">Zaprojektuj filmowy plakat do wystawy fotografii nocnej. Głęboka paleta granatu i bursztynu, odbicia światła na mokrej ulicy, nowoczesna elegancka kompozycja. Dodaj dokładnie taki nagłówek: „MIASTO / PO ZMROKU". Napis ma być wyśrodkowany, czytelny, mocny i zapisany dokładnie w tej formie.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="story">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Storyboard</span>
+            </div>
+            <h4>Trzy kadry kampanii</h4>
+            <p class="desc">Pod sekwencje reklamowe i spójną narrację wizualną.</p>
+            <div class="prompt-box">Stwórz trzykadrowy storyboard dla butikowej marki podróżniczej. Kadr 1: spokojny peron o świcie. Kadr 2: elegancki podróżny wchodzi do ciepło oświetlonego wagonu. Kadr 3: górski krajobraz widziany przez okno. Zachowaj ten sam styl bohatera, tę samą paletę kolorów i premium filmowy nastrój we wszystkich kadrach.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="edycja">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Edycja</span>
+            </div>
+            <h4>Usunięcie chaosu z tła</h4>
+            <p class="desc">Przydatne do porządkowania zdjęć przed publikacją.</p>
+            <div class="prompt-box">Usuń z tła wszystkie rozpraszające elementy: kable, przypadkowe napisy, przypadkowych przechodniów i wizualny bałagan. Główna osoba ma pozostać bez zmian. Uzupełnij wyczyszczone miejsca wiarygodnymi detalami architektury i delikatnym rozmyciem głębi.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="foto">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Foto</span>
+            </div>
+            <h4>Food shot premium</h4>
+            <p class="desc">Pod restauracje, menu i kampanie dla marek spożywczych.</p>
+            <div class="prompt-box">Stwórz apetyczne, luksusowe zdjęcie ręcznie robionych pistacjowych croissantów ułożonych na ciemnym kamiennym blacie. Poranne światło z boku, widoczna warstwowa struktura ciasta, subtelna para z kawy w tle, estetyka sesji editorial dla piekarni premium, realistyczne okruszki i elegancki klimat.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="story edycja">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Stylizacja</span>
+            </div>
+            <h4>Ze szkicu w dopracowany koncept</h4>
+            <p class="desc">Do szybkiego podnoszenia roughów i luźnych kompozycji.</p>
+            <div class="prompt-box">Przekształć ten szkic koncepcyjny w dopracowaną scenę ilustracyjną. Zachowaj oryginalną kompozycję i układ brył, ale dodaj realistyczne światło, warstwową głębię, atmosferyczną mgłę, bardziej szlachetne materiały i wykończenie na poziomie wysokobudżetowego concept artu.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="produkt tekst">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Produkt + Tekst</span>
+            </div>
+            <h4>Baner sprzedażowy</h4>
+            <p class="desc">Łączy produkt, tło reklamowe i krótki napis.</p>
+            <div class="prompt-box">Stwórz czysty baner e-commerce z luksusowym serum do pielęgnacji skóry ustawionym na świetlistej szklanej platformie. Perłowe odbicia, lekkie beżowe tło, estetyka kampanii beauty premium. Dodaj dokładnie taki nagłówek: „SKÓRA / W ŚWIETLE". Napis ma być elegancki, czytelny i dobrze zbalansowany z produktem.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="edycja">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Edycja</span>
+            </div>
+            <h4>Zamiana estetyki obrazu</h4>
+            <p class="desc">Do przeróbki realizmu na ilustrację, kolaż albo styl artystyczny.</p>
+            <div class="prompt-box">Przerenderuj ten obraz jako ilustrację z papierowego kolażu. Zachowaj główną kompozycję i proporcje obiektów, ale zamień całość na warstwowe wycinanki z miękkimi cieniami, matowymi fakturami papieru i stonowaną nordycką paletą kolorów.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+          <article class="prompt-card" data-tags="foto tekst">
+            <div class="prompt-header">
+              <span class="prompt-tag-label">Foto + Tekst</span>
+            </div>
+            <h4>Okładka wydarzenia</h4>
+            <p class="desc">Do social coverów, minisite i miniaturek promocyjnych.</p>
+            <div class="prompt-box">Stwórz dynamiczną okładkę wydarzenia muzycznego z nocnym miejskim tłem, neonowymi refleksami i nowoczesną kompozycją. Główny temat ma być wyraźny, ale zostaw dużo przestrzeni na typografię. Dodaj dokładnie taki tytuł: „NOCNE FALA". Tytuł ma być czytelny, nowoczesny i dobrze wpisany w kompozycję.</div>
+            <button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj prompt</button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── GENERATOR ─────────────────────────────────────── -->
+    <section class="section" id="generator">
+      <svg class="section-bg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="gbg" cx="92%" cy="90%" r="50%"><stop offset="0%" stop-color="#fff" stop-opacity="0.018"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
+        <rect width="1440" height="600" fill="url(#gbg)"/>
+        <line x1="980"  y1="600" x2="1440" y2="160" stroke="#fff" stroke-opacity="0.022" stroke-width="0.5"/>
+        <line x1="1100" y1="600" x2="1440" y2="340" stroke="#fff" stroke-opacity="0.016" stroke-width="0.5"/>
+        <line x1="1250" y1="600" x2="1440" y2="500" stroke="#fff" stroke-opacity="0.012" stroke-width="0.5"/>
+        <line x1="0"    y1="160" x2="1440" y2="160" stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+        <line x1="0"    y1="340" x2="1440" y2="340" stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+        <circle cx="1380" cy="540" r="1.1" fill="#fff" fill-opacity="0.07"/>
+        <circle cx="1410" cy="480" r="0.7" fill="#fff" fill-opacity="0.05"/>
+        <circle cx="1430" cy="560" r="0.8" fill="#fff" fill-opacity="0.05"/>
+      </svg>
+      <div class="shell">
+        <p class="section-eyebrow">— Generator po polsku</p>
+        <h2 class="section-title">Złóż własny prompt w naturalnym polskim.</h2>
+        <p class="section-desc">Wpisz temat i wybierz klimat. Generator buduje prompt tak, żeby brzmiał jak normalna polska instrukcja dla Gemini.</p>
+
+        <div class="generator-wrap">
+
+          <!-- FORM -->
+          <div class="generator-form-panel">
+            <h3>Parametry promptu</h3>
+            <p>Wybierz tryb, temat i styl. Każda zmiana automatycznie aktualizuje prompt po prawej stronie.</p>
+
+            <div class="form-section-label">Tryb i baza</div>
+            <div class="form-grid">
+              <label>Typ promptu
+                <select id="prompt-kind">
+                  <option value="new">Nowy obraz</option>
+                  <option value="edit">Edycja istniejącego obrazu</option>
+                </select>
+              </label>
+              <label>Poziom szczegółowości
+                <select id="detail-level">
+                  <option value="medium">Średni</option>
+                  <option value="short">Krótki</option>
+                  <option value="detailed">Bardzo dokładny</option>
+                </select>
+              </label>
+              <label>Główny temat lub obiekt
+                <input id="subject" type="text" value="elegancką ceramiczną lampę">
+              </label>
+              <label>Rodzaj głównego tematu
+                <select id="subject-type">
+                  <option value="object">Produkt / przedmiot</option>
+                  <option value="woman">Kobieta</option>
+                  <option value="man">Mężczyzna</option>
+                  <option value="person">Osoba (bez płci)</option>
+                  <option value="scene">Wnętrze / scena</option>
+                </select>
+              </label>
+              <label style="grid-column:1/-1">Miejsce lub scena
+                <select id="scene">
+                  <optgroup label="Studio i wnętrza">
+                    <option value="w spokojnym studiu projektowym">Spokojne studio projektowe</option>
+                    <option value="w profesjonalnym studiu fotograficznym z miękkim tłem">Studio fotograficzne</option>
+                    <option value="we wnętrzu butikowego apartamentu">Butikowy apartament</option>
+                    <option value="w jasnym lofcie z dużymi oknami">Jasny loft</option>
+                    <option value="w nowoczesnej galerii sztuki">Nowoczesna galeria</option>
+                    <option value="w eleganckiej kawiarni o poranku">Kawiarnia</option>
+                  </optgroup>
+                  <optgroup label="Miasto i architektura">
+                    <option value="na mokrej ulicy nocą w filmowym klimacie">Nocna ulica</option>
+                    <option value="na dachu wieżowca z widokiem na miasto">Dach z widokiem</option>
+                    <option value="w wąskiej europejskiej uliczce o zachodzie słońca">Europejska uliczka</option>
+                    <option value="przy nowoczesnej szklanej fasadzie biurowca">Nowoczesna architektura</option>
+                    <option value="na spokojnym peronie kolejowym o świcie">Peron o świcie</option>
+                  </optgroup>
+                  <optgroup label="Plener i widoki">
+                    <option value="na minimalistycznym piedestale w galerii">Piedestał i ekspozycja</option>
+                    <option value="na nadmorskim klifie w miękkiej mgle">Klif nad morzem</option>
+                    <option value="na górskim tarasie z szerokim widokiem">Taras z widokiem</option>
+                    <option value="na pustynnym tle z piaskowcem i miękkim światłem">Pustynna scena</option>
+                    <option value="w ogrodzie pełnym zieleni po deszczu">Ogród po deszczu</option>
+                  </optgroup>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-section-label">Fotografia i realizm</div>
+            <div class="form-grid">
+              <label>Styl
+                <select id="style">
+                  <optgroup label="Realistyczna fotografia">
+                    <option value="editorial-photo">Fotografia editorial</option>
+                    <option value="studio-photo">Fotografia studyjna</option>
+                    <option value="fashion-photo">Fotografia modowa</option>
+                    <option value="beauty-photo">Fotografia beauty</option>
+                    <option value="product-photo">Fotografia produktowa</option>
+                    <option value="street-photo">Fotografia uliczna</option>
+                  </optgroup>
+                  <optgroup label="Stylizowane">
+                    <option value="luxury-campaign">Luxury product</option>
+                    <option value="paper-cut">Paper cut</option>
+                    <option value="concept-art">Concept art</option>
+                  </optgroup>
+                </select>
+              </label>
+              <label>Światło
+                <select id="light">
+                  <optgroup label="Naturalne">
+                    <option value="w miękkim porannym świetle">Poranne światło</option>
+                    <option value="w ciepłym świetle złotej godziny">Golden hour</option>
+                    <option value="w delikatnym świetle z dużego okna">Światło z okna</option>
+                    <option value="w pochmurnym, miękkim świetle dziennym">Pochmurne dzienne</option>
+                  </optgroup>
+                  <optgroup label="Kontrolowane">
+                    <option value="w kontrolowanym świetle studyjnym">Studio</option>
+                    <option value="w dramatycznym bocznym świetle modelującym kształt">Dramatyczne boczne</option>
+                    <option value="w miękkim świetle beauty z dużym źródłem światła">Soft beauty light</option>
+                    <option value="w podświetleniu konturowym z tyłu">Backlight</option>
+                  </optgroup>
+                  <optgroup label="Nocne i efektowe">
+                    <option value="w chłodnych neonowych odbiciach">Neon</option>
+                    <option value="w kinowym nocnym świetle z odbiciami na mokrej powierzchni">Filmowa noc</option>
+                  </optgroup>
+                </select>
+              </label>
+              <label>Zakres kadru
+                <select id="crop">
+                  <option value="pokazując wyłącznie samą twarz">Sama twarz</option>
+                  <option value="w portrecie do ramion">Twarz i ramiona</option>
+                  <option value="w ujęciu do pasa">Półpostać</option>
+                  <option value="w ujęciu od kolan w górę">Trzy czwarte postaci</option>
+                  <option value="pokazując całą postać">Cała postać</option>
+                  <option value="jako zbliżenie samego produktu">Samo zbliżenie produktu</option>
+                  <option value="w szerokim planie z widocznym otoczeniem">Szeroki plan</option>
+                </select>
+              </label>
+              <label>Optyka i perspektywa
+                <select id="frame">
+                  <option value="z obiektywem 35 mm i naturalną perspektywą">35 mm / naturalna</option>
+                  <option value="z obiektywem 50 mm i naturalnym balansowaniem tła">50 mm / uniwersalne</option>
+                  <option value="z bardziej portretową kompresją kadru jak przy obiektywie 85 mm">85 mm / portret</option>
+                  <option value="z detalem makro i bardzo małą głębią ostrości">Makro</option>
+                  <option value="w szerokim filmowym kadrze">Szeroki filmowy</option>
+                  <option value="w centralnej kompozycji produktowej">Centralna kompozycja</option>
+                </select>
+              </label>
+              <label>Ostrość i efekty
+                <select id="effect">
+                  <option value="z delikatnym bokeh w tle i naturalnym rozmyciem">Delikatny bokeh</option>
+                  <option value="z mocnym kremowym bokeh w tle">Mocny bokeh</option>
+                  <option value="z lekkim rozmyciem tła">Lekkie rozmycie</option>
+                  <option value="z bardzo mocnym rozmyciem tła">Bardzo mocne rozmycie</option>
+                  <option value="z równą ostrością niemal w całym kadrze">Duża ostrość</option>
+                  <option value="z subtelnym ziarnem filmu i naturalną ostrością">Ziarno filmu</option>
+                  <option value="z lekkim realistycznym motion blur w tle">Motion blur</option>
+                </select>
+              </label>
+              <label>Ograniczenie
+                <select id="constraint">
+                  <option value="clean">Elegancko i czysto</option>
+                  <option value="identity">Zachowaj tożsamość / branding</option>
+                  <option value="text">Czytelny tekst</option>
+                  <option value="pose">Zachowaj twarz i pozę</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-section-label">Edycja i ograniczenia</div>
+            <div class="form-grid">
+              <label class="mode-edit-only" id="preserve-wrapper" hidden>Co ma zostać bez zmian
+                <input id="preserve" type="text" value="kształt lampy, proporcje i główny materiał">
+              </label>
+              <label class="mode-edit-only" id="change-wrapper" hidden>Co dokładnie zmienić
+                <input id="change" type="text" value="tło, światło i ogólny klimat sceny">
+              </label>
+            </div>
+            <div class="form-full">
+              <label>Czego unikać
+                <textarea id="avoid">unikaj chaosu w tle, przypadkowych dodatkowych obiektów i przesadnie sztucznego wyglądu</textarea>
+              </label>
+            </div>
+          </div>
+
+          <!-- OUTPUT -->
+          <div class="generator-output-panel">
+            <h3>Wygenerowany prompt</h3>
+            <p>Prompt jest budowany automatycznie na podstawie wybranych parametrów. Skopiuj go i wklej prosto do Gemini.</p>
+            <textarea class="prompt-output-box" id="prompt-output" readonly aria-label="Wygenerowany prompt"></textarea>
+            <div class="output-actions">
+              <button class="btn-build" id="build-prompt" type="button">Odśwież prompt</button>
+              <button class="btn-copy-out" id="copy-generated" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
+            </div>
+
+            <div style="margin-top:28px;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:22px">
+              <p class="section-eyebrow" style="margin-bottom:12px">— Jak testować dalej</p>
+              <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+                <li style="font-size:0.72rem;color:#3a3a3a;line-height:1.75">Najpierw wklej prompt po polsku bez mieszania języków.</li>
+                <li style="font-size:0.72rem;color:#3a3a3a;line-height:1.75">Jeśli wynik odpływa — doprecyzuj po polsku brakujący element zamiast tłumaczyć całość na angielski.</li>
+                <li style="font-size:0.72rem;color:#3a3a3a;line-height:1.75">Przy edycji zawsze osobno nazwij to, co ma pozostać bez zmian.</li>
+                <li style="font-size:0.72rem;color:#3a3a3a;line-height:1.75">Jeśli po 2-3 iteracjach wynik jest niestabilny — dopiero wtedy zrób wersję mieszaną: opis po polsku, techniczne doprecyzowanie po angielsku.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ŹRÓDŁA ──────────────────────────────────────────── -->
+    <section class="section sources-section" id="zrodla">
+      <svg class="section-bg" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs><radialGradient id="sbg" cx="50%" cy="100%" r="60%"><stop offset="0%" stop-color="#fff" stop-opacity="0.014"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
+        <rect width="1440" height="300" fill="url(#sbg)"/>
+        <line x1="0" y1="80"  x2="1440" y2="80"  stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+        <line x1="0" y1="160" x2="1440" y2="160" stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+        <line x1="0" y1="240" x2="1440" y2="240" stroke="#fff" stroke-opacity="0.01"  stroke-width="0.5"/>
+      </svg>
+      <div class="shell">
+        <p class="section-eyebrow">— Źródła</p>
+        <h2 class="section-title">Na czym opiera się ta wersja strony.</h2>
+        <p class="section-desc">Poniższe linki to oficjalne źródła Google, z których wynika status polskiego języka w Gemini oraz ograniczenie Imagen do promptów angielskich.</p>
+        <ul class="source-list">
+          <li><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2" target="_blank" rel="noreferrer">Google models on Vertex AI — language support for Gemini, including Polish</a></li>
+          <li><a href="https://ai.google.dev/gemini-api/docs/image-generation" target="_blank" rel="noreferrer">Gemini API — image generation guide</a></li>
+          <li><a href="https://ai.google.dev/gemini-api/docs/imagen?hl=pl" target="_blank" rel="noreferrer">Imagen guide — prompts only in English</a></li>
+        </ul>
+        <p class="footer-note">Wniosek o działaniu polskich promptów dla obrazów w Gemini jest inferencją z tych źródeł, a nie wynikiem live testu wykonanego w tym katalogu. Jeśli chcesz test live — po dodaniu klucza API mogę przygotować skrypt, który odpali 5–10 polskich promptów i zapisze wyniki.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <span>Gemini po polsku &nbsp;·&nbsp; 2026</span>
+    <span>Polskie prompty do generowania i edycji obrazów</span>
+  </footer>
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    /* Navbar scroll */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* Filter buttons */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const promptCards = document.querySelectorAll('.prompt-card');
+
+    function setFilter(filter) {
+      filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+      promptCards.forEach(card => {
+        const tags = card.dataset.tags.split(' ');
+        card.hidden = !(filter === 'all' || tags.includes(filter));
+      });
+    }
+
+    filterBtns.forEach(b => b.addEventListener('click', () => setFilter(b.dataset.filter)));
+
+    /* Copy utility */
+    async function copyText(text, btn) {
+      const orig = btn.innerHTML;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const t = document.createElement('textarea');
+          t.value = text; t.style.cssText = 'position:fixed;opacity:0';
+          document.body.appendChild(t); t.focus(); t.select();
+          document.execCommand('copy'); t.remove();
+        }
+        btn.classList.add('copied');
+        btn.innerHTML = '<i class="fas fa-check"></i> Skopiowano';
+        setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = orig; }, 1600);
+      } catch {
+        btn.textContent = 'Błąd';
+        setTimeout(() => { btn.innerHTML = orig; }, 1800);
+      }
+    }
+
+    /* Copy prompt cards */
+    document.querySelectorAll('.prompt-card .copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.closest('.prompt-card').querySelector('.prompt-box').textContent.trim();
+        copyText(text, btn);
+      });
+    });
+
+    /* Copy generated */
+    document.getElementById('copy-generated').addEventListener('click', function() {
+      copyText(document.getElementById('prompt-output').value, this);
+    });
+
+    /* Generator */
+    const promptKindInput  = document.getElementById('prompt-kind');
+    const detailLevelInput = document.getElementById('detail-level');
+    const subjectInput     = document.getElementById('subject');
+    const subjectTypeInput = document.getElementById('subject-type');
+    const sceneInput       = document.getElementById('scene');
+    const styleInput       = document.getElementById('style');
+    const lightInput       = document.getElementById('light');
+    const cropInput        = document.getElementById('crop');
+    const frameInput       = document.getElementById('frame');
+    const effectInput      = document.getElementById('effect');
+    const preserveInput    = document.getElementById('preserve');
+    const changeInput      = document.getElementById('change');
+    const constraintInput  = document.getElementById('constraint');
+    const avoidInput       = document.getElementById('avoid');
+    const output           = document.getElementById('prompt-output');
+    const preserveWrapper  = document.getElementById('preserve-wrapper');
+    const changeWrapper    = document.getElementById('change-wrapper');
+
+    function updateModeFields() {
+      const isEdit = promptKindInput.value === 'edit';
+      preserveWrapper.hidden = !isEdit;
+      changeWrapper.hidden   = !isEdit;
+    }
+
+    function getSubjectProfile() {
+      switch (subjectTypeInput.value) {
+        case 'woman':  return { isPerson:true, isScene:false, genitive:'kobiety',   preserveDefault:'twarz, rysy twarzy, fryzurę, proporcje sylwetki i tożsamość kobiety' };
+        case 'man':    return { isPerson:true, isScene:false, genitive:'mężczyzny', preserveDefault:'twarz, rysy twarzy, fryzurę, proporcje sylwetki i tożsamość mężczyzny' };
+        case 'person': return { isPerson:true, isScene:false, genitive:'osoby',     preserveDefault:'twarz, rysy twarzy, fryzurę, proporcje sylwetki i tożsamość osoby' };
+        case 'scene':  return { isPerson:false, isScene:true, genitive:'sceny',     preserveDefault:'główny układ przestrzeni, perspektywę i charakter miejsca' };
+        default:       return { isPerson:false, isScene:false,genitive:'obiektu',   preserveDefault:'kształt lampy, proporcje i główny materiał' };
+      }
+    }
+
+    function getStyleText(p) {
+      const s = styleInput.value;
+      if (s === 'editorial-photo') return p.isPerson ? 'jako realistyczna fotografia editorial z naturalną skórą' : 'jako realistyczna fotografia editorial o dopracowanym świetle';
+      if (s === 'studio-photo')    return p.isPerson ? 'jako realistyczna fotografia studyjna premium' : 'jako realistyczna fotografia studyjna';
+      if (s === 'fashion-photo')   return p.isPerson ? 'jako realistyczna fotografia modowa premium' : 'jako dopracowana fotografia lifestyle';
+      if (s === 'beauty-photo')    return p.isPerson ? 'jako realistyczna fotografia beauty z naturalną skórą' : 'jako czysta estetyczna fotografia premium';
+      if (s === 'product-photo')   return p.isScene  ? 'jako dopracowana fotografia wnętrza' : 'jako realistyczna fotografia produktowa';
+      if (s === 'street-photo')    return 'jako naturalna fotografia uliczna o filmowym charakterze';
+      if (s === 'luxury-campaign') return p.isPerson ? 'w estetyce luksusowej kampanii modowej' : 'w estetyce luksusowej kampanii produktowej';
+      if (s === 'paper-cut')       return 'jako ilustracja z papierowego kolażu';
+      if (s === 'concept-art')     return 'jako dopracowany filmowy concept art';
+      return 'jako realistyczna fotografia';
+    }
+
+    function getConstraintText(p, isEdit) {
+      switch (constraintInput.value) {
+        case 'clean':    return p.isPerson ? 'Zadbaj o elegancką kompozycję oraz naturalną skórę i proporcje.' : 'Zadbaj o elegancką, czystą kompozycję i wysoką szczegółowość materiałów.';
+        case 'identity': return p.isPerson ? (isEdit ? `Zachowaj tożsamość ${p.genitive} bez zmian.` : `Zadbaj o spójne rysy twarzy i charakter ${p.genitive}.`) : 'Zachowaj kształt, branding i proporcje obiektu bez zmian.';
+        case 'text':     return 'Tekst w obrazie ma być bardzo czytelny i zapisany dokładnie tak, jak podano.';
+        case 'pose':     return p.isPerson ? (isEdit ? `Zachowaj twarz, pozę i sylwetkę ${p.genitive}.` : `Zadbaj o naturalną pozę ${p.genitive}.`) : 'Zachowaj główny układ i proporcje.';
+        default: return '';
+      }
+    }
+
+    function getDetailQualityText(p) {
+      if (p.isPerson) return `Nadaj całości realistyczny charakter fotografii z naturalną skórą, włosami i spójnymi proporcjami sylwetki ${p.genitive}.`;
+      if (p.isScene)  return 'Nadaj całości realistyczny charakter fotografii z wiarygodnym światłem i naturalną głębią planów.';
+      return 'Nadaj całości realistyczny charakter fotografii z wiarygodnymi materiałami i naturalną głębią.';
+    }
+
+    function syncContextDefaults() {
+      const p = getSubjectProfile();
+      const knownPreserve = new Set(['kształt lampy, proporcje i główny materiał','twarz, rysy twarzy, fryzurę, proporcje sylwetki i tożsamość kobiety','twarz, rysy twarzy, fryzurę, proporcje sylwetki i tożsamość mężczyzny','twarz, rysy twarzy, fryzurę, proporcje sylwetki i tożsamość osoby','główny układ przestrzeni, perspektywę i charakter miejsca']);
+      const knownChange   = new Set(['tło, światło i ogólny klimat sceny','światło, kolorystykę i wybrane elementy sceny']);
+      if (!preserveInput.value.trim() || knownPreserve.has(preserveInput.value.trim())) preserveInput.value = p.preserveDefault;
+      if (!changeInput.value.trim()   || knownChange.has(changeInput.value.trim()))     changeInput.value   = p.isScene ? 'światło, kolorystykę i wybrane elementy sceny' : 'tło, światło i ogólny klimat sceny';
+    }
+
+    function buildPrompt() {
+      const subject  = subjectInput.value.trim() || 'elegancki produkt';
+      const level    = detailLevelInput.value;
+      const avoid    = avoidInput.value.trim();
+      const p        = getSubjectProfile();
+      const styleT   = getStyleText(p);
+      const consT    = getConstraintText(p, promptKindInput.value === 'edit');
+      const detailT  = getDetailQualityText(p);
+      const isEdit   = promptKindInput.value === 'edit';
+      updateModeFields(); syncContextDefaults();
+
+      let result;
+      if (!isEdit) {
+        const short    = [`Stwórz ${subject} ${sceneInput.value},`,`${cropInput.value}, ${styleT}, ${lightInput.value}, ${frameInput.value}, ${effectInput.value}.`,consT, avoid ? `Unikaj: ${avoid}.` : ''].filter(Boolean).join(' ');
+        const medium   = [`Stwórz ${subject} ${sceneInput.value}.`,`Pokaż temat ${cropInput.value}, ${styleT}, ${lightInput.value}, ${frameInput.value} oraz ${effectInput.value}.`,consT, avoid ? `Unikaj: ${avoid}.` : ''].filter(Boolean).join(' ');
+        const detailed = [`Stwórz ${subject} ${sceneInput.value}.`,`Pokaż temat ${cropInput.value}, ${styleT}, ${lightInput.value}, ${frameInput.value} oraz ${effectInput.value}.`,detailT, consT, avoid ? `Unikaj: ${avoid}.` : '','Jeśli w scenie pojawia się tło, niech wspiera główny temat i nie przejmuje uwagi.'].filter(Boolean).join(' ');
+        result = level === 'short' ? short : level === 'detailed' ? detailed : medium;
+      } else {
+        const preserve = preserveInput.value.trim() || 'główne cechy obiektu';
+        const change   = changeInput.value.trim()   || 'tło i klimat sceny';
+        const short    = [`Na podstawie przesłanego obrazu zachowaj ${preserve}.`,`Zmień ${change}, tak aby pokazać ${subject} ${sceneInput.value}.`,`Pokaż temat ${cropInput.value}, ${styleT}, ${lightInput.value}, ${frameInput.value} oraz ${effectInput.value}.`,consT, avoid ? `Unikaj: ${avoid}.` : ''].filter(Boolean).join(' ');
+        const medium   = [`Na podstawie przesłanego obrazu zachowaj bez zmian ${preserve}.`,`Zmień wyłącznie ${change}.`,`Końcowy efekt ma przedstawiać ${subject} ${sceneInput.value}. Pokaż temat ${cropInput.value}, ${styleT}, ${lightInput.value}, ${frameInput.value} oraz ${effectInput.value}.`,consT, avoid ? `Unikaj: ${avoid}.` : ''].filter(Boolean).join(' ');
+        const detailed = [`Na podstawie przesłanego obrazu zachowaj bez zmian ${preserve}.`,`Zmień tylko ${change}; nie przebudowuj reszty kadru bardziej niż to konieczne.`,`Końcowy efekt ma przedstawiać ${subject} ${sceneInput.value}.`,`Pokaż temat ${cropInput.value}, ${styleT}, ${lightInput.value}, ${frameInput.value} oraz ${effectInput.value}.`,consT, detailT,`Zadbaj o spójność proporcji, naturalne przejścia i wiarygodne światło.`, avoid ? `Unikaj: ${avoid}.` : ''].filter(Boolean).join(' ');
+        result = level === 'short' ? short : level === 'detailed' ? detailed : medium;
+      }
+      output.value = result;
+    }
+
+    [promptKindInput,detailLevelInput,subjectInput,subjectTypeInput,sceneInput,styleInput,lightInput,cropInput,frameInput,effectInput,preserveInput,changeInput,constraintInput,avoidInput].forEach(el => {
+      el.addEventListener('input', buildPrompt);
+      el.addEventListener('change', buildPrompt);
+    });
+
+    document.getElementById('build-prompt').addEventListener('click', buildPrompt);
+    updateModeFields(); syncContextDefaults(); buildPrompt(); setFilter('all');
+  </script>
+
+</body>
+</html>
