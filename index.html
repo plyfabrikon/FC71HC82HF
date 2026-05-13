@@ -497,3 +497,466 @@
 
 </body>
 </html>
+	font-family:inherit;font-size:.75rem;font-weight:300;background:rgba(0,0,0,.35);
+	border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);padding:8px 10px;
+	outline:none;width:100%;}
+.form-grid input:focus,.form-grid select:focus{border-color:rgba(255,255,255,.5);}
+.prompts-grid{display:grid;grid-template-columns:1fr 1fr;gap:1em;text-align:left;}
+.prompt-card{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);
+	padding:1.5em;display:flex;flex-direction:column;gap:10px;}
+.prompt-card[hidden]{display:none;}
+.prompt-header{display:flex;justify-content:space-between;}
+.prompt-tag{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.prompt-card h4{font-size:1rem;color:#fff;margin:0;padding:0;border:none;}
+.prompt-card h4::after{display:none;}
+.prompt-card .desc{font-size:.75rem;color:rgba(255,255,255,.5);}
+.prompt-box{background:rgba(0,0,0,.4);padding:12px;font-size:.72rem;color:rgba(255,255,255,.6);
+	font-family:'Courier New',monospace;line-height:1.65;
+	border-left:2px solid rgba(255,255,255,.2);flex:1;}
+.copy-btn{align-self:flex-end;padding:.4em 1em;font-size:.62rem;letter-spacing:.1em;
+	text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,.2);
+	color:rgba(255,255,255,.5);cursor:pointer;display:flex;align-items:center;gap:6px;
+	transition:all .2s;font-family:inherit;}
+.copy-btn:hover{border-color:#fff;color:#fff;}
+.copy-btn.copied{border-color:#5a9a68;color:#5a9a68;}
+.gen-output{width:100%;min-height:200px;background:rgba(0,0,0,.3);
+	border:1px solid rgba(255,255,255,.2);border-left:3px solid rgba(255,255,255,.4);
+	color:rgba(255,255,255,.85);padding:16px;font-family:'Courier New',monospace;
+	font-size:.75rem;line-height:1.7;resize:vertical;outline:none;}
+@media(max-width:768px){
+	.prompts-grid{grid-template-columns:1fr;}
+	.gen-panels{grid-template-columns:1fr!important;}
+	.form-grid{grid-template-columns:1fr;}
+}
+	</style>
+</head>
+<body class="landing is-preload">
+<div id="page-wrapper">
+
+	<!-- Header -->
+	<header id="header">
+		<h1 id="logo"><a href="index.html">GeminiPoPolsku</a></h1>
+		<nav id="nav">
+			<ul>
+				<li><a href="#banner">Home</a></li>
+				<li><a href="#one">Weryfikacja</a></li>
+				<li><a href="#zasady">Zasady</a></li>
+				<li><a href="#prompty">Prompty</a></li>
+				<li><a href="#generator">Generator</a></li>
+				<li><a href="#zrodla">Źródła</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Banner -->
+	<section id="banner">
+		<div class="content">
+			<header>
+				<h2>Polskie prompty<br>do obrazów w Gemini.</h2>
+				<p>Gotowe prompty, generator i zasady — wszystko po polsku.<br />
+				Gemini obsługuje język polski. Imagen już nie.</p>
+			</header>
+			<span class="image"><img src="images/pic01.jpg" alt="AI photography" /></span>
+		</div>
+		<a href="#one" class="goto-next scrolly">Next</a>
+	</section>
+
+	<!-- One — Weryfikacja -->
+	<section id="one" class="spotlight style1 bottom">
+		<span class="image fit main"><img src="images/pic02.jpg" alt="Gemini AI" /></span>
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-4 col-12-medium">
+						<header>
+							<h2>Gemini obsługuje<br>język polski.<br>Imagen już nie.</h2>
+							<p>Fakty potwierdzone przez Google — bez domysłów.</p>
+						</header>
+					</div>
+					<div class="col-4 col-12-medium">
+						<p>Nie zgaduję i nie opieram się na „podobno". Rozdzieliłem fakty potwierdzone wprost przez Google od logicznych wniosków z dokumentacji.</p>
+						<ul>
+							<li><strong>Potwierdzone:</strong> Vertex AI wymienia <code>pl</code> jako oficjalnie wspierany przez wszystkie modele Gemini.</li>
+							<li><strong>Potwierdzone:</strong> Gemini generuje i edytuje obrazy konwersacyjnie z tekstu.</li>
+						</ul>
+					</div>
+					<div class="col-4 col-12-medium">
+						<ul>
+							<li><strong>Wykluczone:</strong> Imagen obsługuje wyłącznie angielskie prompty — oficjalne ograniczenie w dokumentacji Google.</li>
+							<li><strong>Brak testu live:</strong> Brak <code>GEMINI_API_KEY</code> — nie wykonano realnego wywołania modelu w tym środowisku.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#two" class="goto-next scrolly">Next</a>
+	</section>
+
+	<!-- Two — Zasady intro -->
+	<section id="two" class="spotlight style2 right">
+		<span class="image fit main"><img src="images/pic03.jpg" alt="Prompt engineering" /></span>
+		<div class="content">
+			<header>
+				<h2>Zasady pisania<br>polskich promptów</h2>
+				<p>Jak konstruować prompty żeby dawały stabilne wyniki</p>
+			</header>
+			<p>Skoro idziemy w polski, warto pisać go naprawdę czysto: pełne zdania, konkretne rzeczowniki i jasne ograniczenia. Gemini lepiej zniesie normalne polskie zdania niż sztuczny zlepek słów kluczowych przetłumaczonych z angielskiego.</p>
+			<ul class="actions">
+				<li><a href="#zasady" class="button scrolly">Zobacz zasady</a></li>
+			</ul>
+		</div>
+		<a href="#three" class="goto-next scrolly">Next</a>
+	</section>
+
+	<!-- Three — Prompty intro -->
+	<section id="three" class="spotlight style3 left">
+		<span class="image fit main bottom"><img src="images/pic04.jpg" alt="Portrait AI" /></span>
+		<div class="content">
+			<header>
+				<h2>Gotowe polskie<br>prompty do kopiowania</h2>
+				<p>Każdy prompt brzmi naturalnie i jest precyzyjny dla modelu</p>
+			</header>
+			<p>Pisane pod Gemini Image, nie pod Imagen. Kliknij kopiuj i wklej bezpośrednio do Gemini. Poniżej znajdziesz pełną bibliotekę z filtrowaniem po kategoriach.</p>
+			<ul class="actions">
+				<li><a href="#prompty" class="button scrolly">Zobacz prompty</a></li>
+			</ul>
+		</div>
+		<a href="#zasady" class="goto-next scrolly">Next</a>
+	</section>
+
+	<!-- Zasady full -->
+	<section id="zasady" class="wrapper style1 special fade-up">
+		<div class="container">
+			<header class="major">
+				<h2>6 zasad które zwiększają szansę na dobry wynik</h2>
+				<p>Jak pisać polskie prompty do Gemini — sprawdzone reguły</p>
+			</header>
+			<div class="box alt">
+				<div class="row gtr-uniform">
+					<section class="col-4 col-6-medium col-12-xsmall">
+						<span class="icon solid alt major fa-align-left"></span>
+						<h3>1. Najpierw scena</h3>
+						<p>Zacznij od głównego tematu, miejsca, pory dnia i sytuacji. Dopiero potem dodaj styl i technikę fotograficzną.</p>
+					</section>
+					<section class="col-4 col-6-medium col-12-xsmall">
+						<span class="icon solid alt major fa-sun"></span>
+						<h3>2. Potem forma</h3>
+						<p>W drugiej części doprecyzuj: editorial, fotografia studyjna, bokeh, obiektyw 50mm, miękkie złote światło.</p>
+					</section>
+					<section class="col-4 col-6-medium col-12-xsmall">
+						<span class="icon solid alt major fa-user-shield"></span>
+						<h3>3. Chroń tożsamość</h3>
+						<p>Przy edycji nazwij co ma zostać bez zmian: twarz, poza, logo, ubranie. Nie pisz tylko „zmień tło".</p>
+					</section>
+					<section class="col-4 col-6-medium col-12-xsmall">
+						<span class="icon solid alt major fa-quote-right"></span>
+						<h3>4. Tekst w cudzysłowie</h3>
+						<p>Jeśli chcesz napis w kadrze, podaj go dokładnie i zaznacz że ma być czytelny i zapisany w tej formie.</p>
+					</section>
+					<section class="col-4 col-6-medium col-12-xsmall">
+						<span class="icon solid alt major fa-redo"></span>
+						<h3>5. Rób iteracje</h3>
+						<p>Gemini działa konwersacyjnie — zamiast jednego ogromnego promptu lepiej trzy krótkie, precyzyjne korekty.</p>
+					</section>
+					<section class="col-4 col-6-medium col-12-xsmall">
+						<span class="icon solid alt major fa-language"></span>
+						<h3>6. Mów prosto</h3>
+						<p>Gemini lepiej zniesie normalne polskie zdania niż sztuczny zlepek keywordów przetłumaczonych z angielskiego.</p>
+					</section>
+				</div>
+			</div>
+			<footer class="major">
+				<ul class="actions special">
+					<li><a href="#prompty" class="button scrolly">Przejdź do promptów</a></li>
+				</ul>
+			</footer>
+		</div>
+	</section>
+
+	<!-- Prompty full -->
+	<section id="prompty" class="wrapper style2 special fade-up">
+		<div class="container">
+			<header class="major">
+				<h2>Bank polskich promptów</h2>
+				<p>Gotowe prompty do kopiowania — kliknij i wklej do Gemini</p>
+			</header>
+			<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:2em;text-align:left">
+				<div style="display:flex;gap:8px;flex-wrap:wrap">
+					<button class="filter-btn active" data-filter="all">Wszystkie</button>
+					<button class="filter-btn" data-filter="foto">Foto</button>
+					<button class="filter-btn" data-filter="edycja">Edycja</button>
+					<button class="filter-btn" data-filter="produkt">Produkt</button>
+					<button class="filter-btn" data-filter="tekst">Tekst</button>
+					<button class="filter-btn" data-filter="story">Storyboard</button>
+				</div>
+				<span style="font-size:.75rem;opacity:.5">Kliknij „Kopiuj" i wklej do Gemini</span>
+			</div>
+			<div class="prompts-grid">
+				<article class="prompt-card" data-tags="foto">
+					<div class="prompt-header"><span class="prompt-tag">Foto</span></div>
+					<h4>Portret editorial</h4>
+					<p class="desc">Naturalny prompt do portretu w stylu magazynowym.</p>
+					<div class="prompt-box">Stwórz realistyczny portret młodej projektantki mody stojącej w wąskiej uliczce w Lizbonie późnym popołudniem. Swobodna poza, lniany strój w jasnych kolorach, miękkie złote światło, naturalna skóra, płytka głębia ostrości, estetyka sesji do magazynu modowego, subtelne ziarno filmu.</div>
+					<button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
+				</article>
+				<article class="prompt-card" data-tags="edycja foto">
+					<div class="prompt-header"><span class="prompt-tag">Edycja</span></div>
+					<h4>Zmiana tła bez ruszania osoby</h4>
+					<p class="desc">Do przeróbek zdjęć profilowych i brandingowych.</p>
+					<div class="prompt-box">Zachowaj osobę dokładnie bez zmian: twarz, fryzurę, pozę i ubranie. Zmień wyłącznie tło na nowoczesną przestrzeń coworkingową o wschodzie słońca. Dodaj miękkie ciepłe światło przez duże okna i zachowaj fotorealistyczny charakter.</div>
+					<button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
+				</article>
+				<article class="prompt-card" data-tags="produkt">
+					<div class="prompt-header"><span class="prompt-tag">Produkt</span></div>
+					<h4>Hero shot produktu</h4>
+					<p class="desc">Pod landing page, reklamę lub premium packshot.</p>
+					<div class="prompt-box">Stwórz eleganckie zdjęcie produktu — matowy czarny głośnik bezprzewodowy na rzeźbiarskim kamiennym postumencie. Kontrolowane światło studyjne, połysk tylko na krawędziach, głębokie czyste cienie, minimalistyczne tło, estetyka luksusowej kampanii technologicznej.</div>
+					<button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
+				</article>
+				<article class="prompt-card" data-tags="tekst">
+					<div class="prompt-header"><span class="prompt-tag">Tekst</span></div>
+					<h4>Poster z hasłem</h4>
+					<p class="desc">Do plakatów, coverów i zapowiedzi wydarzeń.</p>
+					<div class="prompt-box">Zaprojektuj filmowy plakat do wystawy fotografii nocnej. Głęboka paleta granatu i bursztynu, odbicia na mokrej ulicy. Dodaj dokładnie taki nagłówek: „MIASTO / PO ZMROKU". Napis wyśrodkowany, czytelny, zapisany dokładnie w tej formie.</div>
+					<button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
+				</article>
+				<article class="prompt-card" data-tags="story">
+					<div class="prompt-header"><span class="prompt-tag">Storyboard</span></div>
+					<h4>Trzy kadry kampanii</h4>
+					<p class="desc">Pod sekwencje reklamowe i spójną narrację.</p>
+					<div class="prompt-box">Stwórz trzykadrowy storyboard dla butikowej marki podróżniczej. Kadr 1: spokojny peron o świcie. Kadr 2: elegancki podróżny wchodzi do wagonu. Kadr 3: górski krajobraz przez okno. Ten sam styl bohatera i paleta kolorów we wszystkich kadrach.</div>
+					<button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
+				</article>
+				<article class="prompt-card" data-tags="edycja">
+					<div class="prompt-header"><span class="prompt-tag">Edycja</span></div>
+					<h4>Usunięcie chaosu z tła</h4>
+					<p class="desc">Do porządkowania zdjęć przed publikacją.</p>
+					<div class="prompt-box">Usuń z tła wszystkie rozpraszające elementy: kable, przypadkowe napisy, przechodniów i wizualny bałagan. Główna osoba pozostaje bez zmian. Uzupełnij wyczyszczone miejsca wiarygodnymi detalami architektury i delikatnym rozmyciem głębi.</div>
+					<button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
+				</article>
+				<article class="prompt-card" data-tags="foto">
+					<div class="prompt-header"><span class="prompt-tag">Foto</span></div>
+					<h4>Food shot premium</h4>
+					<p class="desc">Pod restauracje, menu i kampanie spożywcze.</p>
+					<div class="prompt-box">Stwórz apetyczne zdjęcie pistacjowych croissantów na ciemnym kamiennym blacie. Poranne światło z boku, widoczna warstwowa struktura ciasta, subtelna para z kawy w tle, estetyka editorial dla piekarni premium, realistyczne okruszki.</div>
+					<button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
+				</article>
+				<article class="prompt-card" data-tags="produkt edycja">
+					<div class="prompt-header"><span class="prompt-tag">Produkt + Edycja</span></div>
+					<h4>Nowe tło dla packshotu</h4>
+					<p class="desc">Do osadzenia produktu w ciekawszej scenie.</p>
+					<div class="prompt-box">Użyj przesłanego produktu dokładnie jako referencji. Zachowaj kształt, kolor, etykietę i proporcje bez zmian. Umieść go w scenie pustynnego luksusu: piaskowiec, miękkie boczne światło, delikatne cienie, dużo przestrzeni na nagłówek.</div>
+					<button class="copy-btn" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<!-- Generator -->
+	<section id="generator" class="wrapper style3 fade-up">
+		<div class="container" style="max-width:1100px">
+			<header class="major">
+				<h2>Generator polskich promptów</h2>
+				<p>Złóż własny prompt — nowy obraz lub edycja własnego zdjęcia</p>
+			</header>
+
+			<div style="display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:1.5em">
+				<button class="gen-tab active" id="tab-new" type="button" onclick="switchGenMode('new')">Nowy obraz</button>
+				<button class="gen-tab" id="tab-edit" type="button" onclick="switchGenMode('edit')">Edycja własnego zdjęcia</button>
+			</div>
+
+			<div class="gen-panels" style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:2em;text-align:left">
+
+				<!-- NOWY OBRAZ -->
+				<div id="form-new">
+					<div class="form-section-label">Co wygenerować</div>
+					<div class="form-grid">
+						<label>Główny temat / obiekt<input id="n-subject" type="text" value="elegancką ceramiczną lampę" /></label>
+						<label>Rodzaj tematu<select id="n-subject-type"><option value="object">Produkt / przedmiot</option><option value="woman">Kobieta</option><option value="man">Mężczyzna</option><option value="person">Osoba</option><option value="scene">Wnętrze / scena</option></select></label>
+						<label style="grid-column:1/-1">Miejsce lub scena<select id="n-scene"><optgroup label="Studio"><option value="w spokojnym studiu z betonową ścianą">Studio — betonowe tło</option><option value="w studiu fotograficznym z białym tłem">Studio — białe tło</option><option value="w studiu fotograficznym z czarnym tłem">Studio — czarne tło</option><option value="we wnętrzu butikowego apartamentu">Butikowy apartament</option><option value="w jasnym lofcie z ceglaną ścianą">Loft z cegłą</option><option value="w nowoczesnej galerii sztuki">Galeria sztuki</option><option value="w eleganckiej kawiarni">Kawiarnia</option><option value="w przytulnym salonie z kominkiem">Salon z kominkiem</option><option value="w hotel lobby z marmurem">Hotel lobby</option><option value="w restauracji fine dining">Restauracja fine dining</option></optgroup><optgroup label="Miasto"><option value="na mokrej ulicy nocą z neonami i odbiciami w kałużach">Nocna ulica z neonami</option><option value="na dachu wieżowca z panoramą">Dach wieżowca</option><option value="w wąskiej europejskiej uliczce o zachodzie słońca">Europejska uliczka</option><option value="przy szklanej fasadzie biurowca">Szklana fasada</option><option value="na peronie kolejowym o świcie">Peron o świcie</option><option value="w zabytkowym centrum miasta">Zabytkowe centrum</option><option value="na moście nad rzeką o zmierzchu">Most nad rzeką</option></optgroup><optgroup label="Natura"><option value="na klifie z widokiem na ocean">Klif nad oceanem</option><option value="na górskim szczycie z panoramą">Górski szczyt</option><option value="na pustynnym tle z piaskowcem">Pustynia</option><option value="w ogrodzie pełnym zieleni po deszczu">Ogród po deszczu</option><option value="w lesie bukowym z filtrowanym światłem">Las</option><option value="na plaży przy oceanie o wschodzie słońca">Plaża</option><option value="na polu lawendy">Pole lawendy</option><option value="w jesiennym parku ze złotymi liśćmi">Jesienny park</option><option value="na śnieżnym krajobrazie z zaśnieżonymi drzewami">Śnieg i mróz</option></optgroup></select></label>
+					</div>
+					<div class="form-section-label">Fotografia</div>
+					<div class="form-grid">
+						<label>Styl<select id="n-style"><optgroup label="Fotografia"><option value="editorial-photo">Editorial</option><option value="studio-photo">Studyjna</option><option value="fashion-photo">Modowa</option><option value="beauty-photo">Beauty</option><option value="product-photo">Produktowa</option><option value="street-photo">Uliczna</option><option value="lifestyle-photo">Lifestyle</option><option value="food-photo">Food</option></optgroup><optgroup label="Artystyczne"><option value="luxury-campaign">Luksusowa kampania</option><option value="dark-moody">Dark &amp; moody</option><option value="light-airy">Light &amp; airy</option><option value="vintage-film">Vintage film</option><option value="fine-art">Fine art</option><option value="concept-art">Concept art</option></optgroup></select></label>
+						<label>Oświetlenie<select id="n-light"><optgroup label="Naturalne"><option value="w miękkim porannym świetle">Poranek</option><option value="w ciepłym świetle złotej godziny — boczne, długie cienie">Golden hour</option><option value="w delikatnym świetle z dużego okna">Światło z okna</option><option value="w pochmurnym miękkim świetle dziennym">Pochmurne</option><option value="o świcie — różowo-złote niebo">Świt</option><option value="o zmierzchu — blue hour">Blue hour</option><option value="w plamkach słońca przez liście">Plamki słońca</option></optgroup><optgroup label="Sztuczne"><option value="w miękkim równomiernym świetle studyjnym">Miękkie studyjne</option><option value="w dramatycznym bocznym świetle — głęboki cień">Dramatyczne boczne</option><option value="w miękkim świetle beauty z dużym źródłem">Soft beauty</option><option value="w podświetleniu konturowym backlight">Backlight</option><option value="w świetle świec — romantyczne">Świece</option><option value="w chłodnych neonowych odbiciach">Neonowe</option><option value="rembrandt lighting">Rembrandt</option></optgroup></select></label>
+						<label>Kadr<select id="n-crop"><option value="pokazując wyłącznie samą twarz">Sama twarz</option><option value="w portrecie do ramion">Do ramion</option><option value="w ujęciu do pasa">Do pasa</option><option value="w ujęciu od kolan w górę">Trzy czwarte</option><option value="pokazując całą postać">Cała postać</option><option value="jako zbliżenie produktu">Zbliżenie produktu</option><option value="w szerokim planie">Szeroki plan</option><option value="z góry — bird's eye view">Widok z góry</option><option value="z nisko — low angle">Low angle</option></select></label>
+						<label>Optyka<select id="n-frame"><option value="z obiektywem 24 mm i szerokim kątem">24 mm</option><option value="z obiektywem 35 mm i naturalną perspektywą">35 mm</option><option value="z obiektywem 50 mm">50 mm</option><option value="z obiektywem 85 mm — portretowym">85 mm portretowy</option><option value="z obiektywem 135 mm i kompresją tła">135 mm</option><option value="z obiektywem makro">Makro</option><option value="z obiektywem tilt-shift">Tilt-shift</option><option value="z obiektywem fisheye">Fisheye</option><option value="w centralnej symetrycznej kompozycji">Centralna kompozycja</option></select></label>
+						<label>Efekt<select id="n-effect"><option value="">— brak —</option><option value="z delikatnym bokeh w tle">Delikatny bokeh</option><option value="z mocnym kremowym bokeh">Mocny bokeh</option><option value="z bokeh z rozbłyskami lamp">Bokeh z rozbłyskami</option><option value="z dużą ostrością w całym kadrze">Pełna ostrość</option><option value="z subtelnym ziarnem filmowym">Ziarno filmowe</option><option value="z lekką winietą">Winieta</option><option value="z motion blur w tle">Motion blur</option><option value="z lens flare anamorficznym">Lens flare</option></select></label>
+						<label>Priorytet<select id="n-constraint"><option value="clean">Czysto i elegancko</option><option value="identity">Zachowaj tożsamość</option><option value="text">Czytelny tekst</option><option value="pose">Naturalna poza</option></select></label>
+					</div>
+					<div class="form-section-label">Szczegółowość</div>
+					<div class="form-grid">
+						<label>Poziom<select id="n-detail"><option value="medium">Średni</option><option value="short">Krótki</option><option value="detailed">Bardzo dokładny</option></select></label>
+						<label>Czego unikać<input id="n-avoid" type="text" value="chaotyczne tło, sztuczny wygląd" /></label>
+					</div>
+				</div>
+
+				<!-- EDYCJA -->
+				<div id="form-edit" hidden>
+					<div class="form-section-label">Co chcesz zmienić?</div>
+					<div class="edit-checks">
+						<label class="check-chip"><input type="checkbox" value="bg" onchange="updateEditSections()"><span>Tło / lokacja</span></label>
+						<label class="check-chip"><input type="checkbox" value="light" onchange="updateEditSections()"><span>Oświetlenie</span></label>
+						<label class="check-chip"><input type="checkbox" value="lens" onchange="updateEditSections()"><span>Obiektyw</span></label>
+						<label class="check-chip"><input type="checkbox" value="weather" onchange="updateEditSections()"><span>Efekty atmosferyczne</span></label>
+						<label class="check-chip"><input type="checkbox" value="outfit" onchange="updateEditSections()"><span>Strój</span></label>
+						<label class="check-chip"><input type="checkbox" value="hair" onchange="updateEditSections()"><span>Fryzura / włosy</span></label>
+						<label class="check-chip"><input type="checkbox" value="makeup" onchange="updateEditSections()"><span>Makijaż</span></label>
+						<label class="check-chip"><input type="checkbox" value="style" onchange="updateEditSections()"><span>Styl / estetyka</span></label>
+						<label class="check-chip"><input type="checkbox" value="colorgrade" onchange="updateEditSections()"><span>Paleta kolorów</span></label>
+						<label class="check-chip"><input type="checkbox" value="refresh" onchange="updateEditSections()"><span>Poprawa jakości</span></label>
+						<label class="check-chip"><input type="checkbox" value="remove" onchange="updateEditSections()"><span>Usuń elementy</span></label>
+					</div>
+
+					<div class="edit-section" id="es-bg" hidden>
+						<div class="form-section-label">Tło</div>
+						<div class="form-grid">
+							<label>Wnętrze<select id="e-bg-indoor"><option value="">— nie wybieram —</option><option value="jednolite jasne tło studyjne">Jasne studyjne</option><option value="jednolite ciemne tło studyjne">Ciemne studyjne</option><option value="betonowa ściana — industrialny">Betonowa ściana</option><option value="ceglana ściana">Ceglana ściana</option><option value="nowoczesny loft z dużymi oknami">Loft</option><option value="salon z kominkiem">Salon z kominkiem</option><option value="elegancka sypialnia">Elegancka sypialnia</option><option value="kawiarnia — ciepłe meble">Kawiarnia</option><option value="galeria sztuki">Galeria sztuki</option><option value="hotel lobby z marmurem">Hotel lobby</option><option value="restauracja fine dining">Restauracja fine dining</option><option value="butik modowy">Butik modowy</option><option value="spa / wellness">Spa / wellness</option></select></label>
+							<label>Plener<select id="e-bg-outdoor"><option value="">— nie wybieram —</option><option value="europejska uliczka z brukiem">Europejska uliczka</option><option value="nocna ulica z neonami i kałużami">Nocna ulica z neonami</option><option value="dach wieżowca z panoramą">Dach wieżowca</option><option value="zabytkowe centrum — kamienice, bruk">Zabytkowe centrum</option><option value="graffiti mural na ścianie">Graffiti / mural</option><option value="las z filtrowanym zielonym światłem">Las</option><option value="plaża przy oceanie">Plaża</option><option value="górski szczyt">Góry</option><option value="jezioro o świcie z mgłą">Jezioro o świcie</option><option value="pole lawendy">Pole lawendy</option><option value="śnieżny krajobraz">Śnieg</option><option value="jesienny las ze złotymi liśćmi">Jesienny las</option><option value="pustynia z piaskowcem">Pustynia</option></select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-light" hidden>
+						<div class="form-section-label">Oświetlenie</div>
+						<div class="form-grid">
+							<label>Źródło<select id="e-light-source"><option value="">— nie określam —</option><option value="świt — różowo-złote niebo">Świt</option><option value="golden hour — ciepłe boczne">Golden hour</option><option value="blue hour — zmierzch">Blue hour</option><option value="miękkie studyjne">Miękkie studyjne</option><option value="dramatyczne boczne — głęboki cień">Dramatyczne boczne</option><option value="soft beauty">Soft beauty</option><option value="backlight — kontur sylwetki">Backlight</option><option value="neonowe — kolorowe">Neonowe</option><option value="świece — romantyczne">Świece</option><option value="rembrandt lighting">Rembrandt</option><option value="latarnia nocna">Latarnia nocna</option></select></label>
+							<label>Nastrój<select id="e-light-mood"><option value="">— nie określam —</option><option value="bardzo ciepłe — amber">Bardzo ciepłe</option><option value="ciepłe naturalne">Ciepłe</option><option value="neutralne">Neutralne</option><option value="chłodne">Chłodne</option><option value="dramatyczne — wysoki kontrast">Dramatyczne</option><option value="filmowe — desaturowane">Filmowe</option></select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-lens" hidden>
+						<div class="form-section-label">Obiektyw</div>
+						<div class="form-grid">
+							<label>Ogniskowa<select id="e-lens-focal"><option value="">— nie określam —</option><option value="24 mm — szeroki kąt">24 mm</option><option value="35 mm">35 mm</option><option value="50 mm">50 mm</option><option value="85 mm — portretowy">85 mm portretowy</option><option value="135 mm — kompresja">135 mm</option><option value="makro">Makro</option><option value="fisheye">Fisheye</option></select></label>
+							<label>Głębia ostrości<select id="e-lens-dof"><option value="">— nie określam —</option><option value="bardzo płytka — kremowy bokeh">Bardzo płytka</option><option value="płytka — delikatny bokeh">Płytka</option><option value="głęboka — wszystko ostre">Głęboka</option><option value="bokeh z rozbłyskami lamp">Bokeh z rozbłyskami</option></select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-weather" hidden>
+						<div class="form-section-label">Efekty atmosferyczne</div>
+						<div class="form-grid">
+							<label>Efekt pogodowy<select id="e-weather-type"><option value="">— brak —</option><option value="pada deszcz — krople w powietrzu, mokre powierzchnie, kałuże z odbiciami">Deszcz z kałużami</option><option value="ulewa — intensywne strumienie deszczu">Ulewa</option><option value="po deszczu — mokry bruk, kałuże">Po deszczu</option><option value="deszcz nocny — neonowe odbicia w kałużach">Deszcz nocny z neonami</option><option value="gęsta mgła">Gęsta mgła</option><option value="poranna mgła — niskie warstwy">Poranna mgła</option><option value="haze — lekkie zamglenie">Haze</option><option value="pada śnieg — duże płatki">Pada śnieg</option><option value="po śniegu — biały puch">Po śniegu</option><option value="szron — lodowe kryształy">Szron</option><option value="silny wiatr — powiewające włosy i ubranie">Silny wiatr</option><option value="opadające liście — jesienny wiatr">Opadające liście</option><option value="sunflare — rozbłysk słońca w kadrze">Sunflare</option><option value="god rays — promienie słońca przez mgłę">God rays</option><option value="tęcza w tle">Tęcza</option><option value="burza z piorunami w tle">Burza</option></select></label>
+							<label>Efekt filmowy<select id="e-film-effect"><option value="">— brak —</option><option value="ziarno filmowe">Ziarno filmowe</option><option value="winieta">Winieta</option><option value="motion blur tła">Motion blur</option><option value="chromatic aberration">Chromatic aberration</option><option value="mokre szkło przed kadrem">Mokre szkło</option><option value="długa ekspozycja — smugi świateł">Długa ekspozycja</option></select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-outfit" hidden>
+						<div class="form-section-label">Strój / ubranie</div>
+						<div class="form-grid">
+							<label>Typ stroju<select id="e-outfit-type"><option value="">— nie określam —</option><option value="casualowy strój — spodnie i luźna koszula">Casual codzienny</option><option value="streetwear — oversizowa bluza i cargo pants">Streetwear</option><option value="casualowa sukienka midi">Sukienka midi</option><option value="garnitur antracytowy z białą koszulą">Garnitur antracytowy</option><option value="garnitur granatowy">Garnitur granatowy</option><option value="sukienka koktajlowa midi">Sukienka koktajlowa</option><option value="power suit ecru">Power suit ecru</option><option value="czarny garnitur damski">Czarny garnitur damski</option><option value="suknia wieczorowa w głębokiej czerwieni">Suknia czerwona</option><option value="suknia jedwabna w kolorze szampana">Suknia szampańska</option><option value="czarna suknia z rozcięciem">Czarna suknia</option><option value="mała czarna LBD">Mała czarna</option><option value="strój sportowy — legginsy i crop top">Sportowy</option><option value="strój athleisure">Athleisure</option><option value="sukienka boho z falbanami i haftami">Boho z haftami</option><option value="zwiewna sukienka lniana kremowa">Lniana kremowa</option><option value="vintage sukienka w grochy — lata 50.">Vintage lata 50.</option><option value="cottagecore — sukienka w kwiaty">Cottagecore</option></select></label>
+							<label>Kolor / materiał<select id="e-outfit-color"><option value="">— nie określam —</option><option value="w kolorze głębokiej czerni">Głęboka czerń</option><option value="w kolorze czystej bieli">Czysta biel</option><option value="w kolorze ecru / kremowym">Ecru / krem</option><option value="w kolorze głębokiej czerwieni">Czerwień</option><option value="w kolorze burgund">Burgund</option><option value="w kolorze granatowym">Granat</option><option value="w kolorze butelkowej zieleni">Butelkowa zieleń</option><option value="w kolorze szampana / złotym">Szampan / złoto</option><option value="w kolorze nude / beżowym">Nude / beż</option><option value="z jedwabiu">Jedwab</option><option value="z koronki">Koronka</option><option value="ze skóry / ekoskóry">Skóra</option><option value="z tkaniny satynowej">Satyna</option></select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-hair" hidden>
+						<div class="form-section-label">Fryzura / włosy</div>
+						<div class="form-grid">
+							<label>Fryzura<select id="e-hair-style"><option value="">— nie określam —</option><option value="pixie cut — gładka i zaczesana do tyłu">Pixie cut</option><option value="bob klasyczny — gładki i symetryczny">Bob klasyczny</option><option value="bob asymetryczny">Bob asymetryczny</option><option value="blunt bob — idealnie równo obcięty">Blunt bob</option><option value="wolf cut — warstwy i cienkie końcówki">Wolf cut</option><option value="lob — bob na ramionach">Lob</option><option value="beach waves — lekko potargane">Beach waves</option><option value="naturalne loki do ramion">Naturalne loki</option><option value="half-up half-down">Half-up half-down</option><option value="długie proste — lśniące i gładkie">Długie proste</option><option value="Hollywood waves — duże fale">Hollywood waves</option><option value="długie loki">Długie loki</option><option value="wysoki kucyk">Wysoki kucyk</option><option value="niski kok">Niski kok</option><option value="luźny warkocz">Luźny warkocz</option><option value="elegancki kok na karku">Kok na karku</option><option value="messy bun">Messy bun</option><option value="warkocz francuski">Warkocz francuski</option></select></label>
+							<label>Kolor<select id="e-hair-color"><option value="">— nie określam —</option><option value="głęboka czerń z naturalnym połyskiem">Głęboka czerń</option><option value="ciemny brąz — czekolada">Ciemny brąz</option><option value="kasztanowy z ciepłymi refleksami">Kasztan</option><option value="jasny brąz z naturalnymi refleksami">Jasny brąz</option><option value="ciemny blond — sandy blonde">Ciemny blond</option><option value="jasny blond — platinum blonde">Jasny blond / platinum</option><option value="naturalny rudy — miedziany">Rudy / miedziany</option><option value="siwe lub srebrne — naturalne">Siwe / srebrne</option><option value="balayage — od ciemnych korzeni do jasnych końcówek">Balayage</option><option value="ombre — gradientowe przejście">Ombre</option><option value="honey blonde — ciepłe miodowe refleksy">Honey blonde</option><option value="ash blonde — chłodne popielate">Ash blonde</option><option value="głęboki burgund / winny odcień">Burgund / wino</option><option value="pastelowy różowy">Pastelowy różowy</option><option value="hot pink — intensywny różowy">Hot pink</option><option value="fioletowe — lawenda lub śliwka">Fiolet / lawenda</option><option value="niebieskie — granat lub błękit">Niebieski</option><option value="srebrno-szare — silver hair">Silver</option></select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-makeup" hidden>
+						<div class="form-section-label">Makijaż</div>
+						<div class="form-grid">
+							<label>Typ makijażu<select id="e-makeup-type"><option value="">— nie określam —</option><option value="no-makeup makeup — bardzo naturalny">No-makeup makeup</option><option value="naturalny makijaż dzienny">Naturalny dzienny</option><option value="glass skin — intensywnie lśniąca skóra">Glass skin</option><option value="dewy skin — zdrowy blask, glossy usta">Dewy skin</option><option value="smoky eye w szarości i czerni">Smoky eye szary</option><option value="intensywne brązowe smoky eye ze złotem">Smoky eye złoty</option><option value="czerwona szminka klasyczna z linią">Czerwona klasyczna</option><option value="old Hollywood — cat eye, czerwone usta">Old Hollywood</option><option value="glitter — połyskujące cienie">Glitter</option><option value="fox eye — uniesione kąciki">Fox eye</option><option value="latte makeup — brązowe odcienie">Latte makeup</option><option value="soft glam — subtelny smoky, highlight">Soft glam</option><option value="cherry girl — czerwone policzki i usta">Cherry girl</option><option value="cold girl — chłodny różowy, glossy">Cold girl</option><option value="clean girl — minimalizm, złota biżuteria">Clean girl</option><option value="blush draping — mocny różowy na całej twarzy">Blush draping</option></select></label>
+							<label>Kolor ust<select id="e-makeup-lips"><option value="">— nie określam —</option><option value="intensywna czerwona szminka">Intensywna czerwień</option><option value="głęboka bordowa szminka">Bordo / wino</option><option value="różowa szminka mauve">Mauve różowy</option><option value="nude szminka dopasowana do karnacji">Nude</option><option value="transparentny gloss">Transparentny gloss</option><option value="różowy gloss">Różowy gloss</option><option value="głęboka śliwkowa szminka">Śliwka / plum</option><option value="koralowa szminka">Koral</option></select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-style" hidden>
+						<div class="form-section-label">Styl / estetyka</div>
+						<div class="form-grid">
+							<label>Styl<select id="e-style-target"><option value="">— nie określam —</option><option value="czarno-biała fotografia klasyczna">Czarno-biały</option><option value="ciepła estetyka filmowa lat 90.">Film lat 90.</option><option value="zimna nowoczesna estetyka edytorialna">Zimny editorial</option><option value="jasna estetyka skandynawska">Skandynawski</option><option value="luksusowa estetyka kampanii modowej">Luksusowa kampania</option><option value="dramatyczny kontrast kinowy">Kinowy kontrast</option><option value="vintage z ziarnistością i winietą">Vintage</option><option value="jasna i pastelowa estetyka lifestyle">Pastelowy lifestyle</option></select></label>
+							<label>Intensywność<select id="e-style-intensity"><option value="">— nie określam —</option><option value="subtelna zmiana, zachowaj naturalność">Subtelna</option><option value="wyraźna zmiana stylu">Wyraźna</option><option value="radykalna transformacja stylistyczna">Radykalna</option></select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-colorgrade" hidden>
+						<div class="form-section-label">Paleta kolorów</div>
+						<div class="form-grid">
+							<label>Paleta<select id="e-color-target"><option value="">— nie określam —</option><option value="ciepła złoto-brązowa paleta">Ciepła złoto-brązowa</option><option value="chłodna niebiesko-szara paleta">Chłodna</option><option value="monochromatyczna czarno-biała">Czarno-biała</option><option value="desaturowana stonowana">Desaturowana</option><option value="nasycona żywa paleta">Nasycona i żywa</option><option value="pastelowa miękka paleta">Pastelowa</option><option value="filmowy teal and orange">Teal &amp; orange</option></select></label>
+							<label>Intensywność<select id="e-color-intensity"><option value="">— nie określam —</option><option value="subtelna korekta kolorów">Subtelna</option><option value="wyraźna zmiana kolorystyki">Wyraźna</option><option value="radykalna zmiana całej palety">Radykalna</option></select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-refresh" hidden>
+						<div class="form-section-label">Poprawa jakości</div>
+						<div class="form-grid">
+							<label style="grid-column:1/-1">Zakres<select id="e-refresh-scope"><option value="">— nie określam —</option><option value="ogólna poprawa jakości i ostrości">Ogólna jakość</option><option value="usunięcie szumów i ziarna">Usunięcie szumów</option><option value="naturalny retusz skóry bez przesady">Naturalny retusz skóry</option><option value="rozjaśnienie i wyważenie kolorów">Wyważenie kolorów</option><option value="dodanie głębi i kontrastu">Głębia i kontrast</option><option value="kompleksowe odświeżenie">Kompleksowe</option></select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-remove" hidden>
+						<div class="form-section-label">Usuń elementy z tła</div>
+						<div class="form-grid">
+							<label style="grid-column:1/-1">Co usunąć<input id="e-remove-what" type="text" value="kable, napisy, przechodnie w tle" /></label>
+							<label>Uzupełnij<select id="e-remove-fill"><option value="">— nie określam —</option><option value="wiarygodnymi detalami tła pasującymi do sceny">Wiarygodne tło</option><option value="rozmyciem pasującym do reszty kadru">Rozmycie bokeh</option><option value="jednolitym tłem w kolorze otoczenia">Jednolite tło</option></select></label>
+						</div>
+					</div>
+
+					<div class="form-section-label" style="margin-top:20px">Ogólne</div>
+					<div class="form-grid">
+						<label>Co zachować<input id="e-preserve-all" type="text" value="twarz, rysy, proporcje" /></label>
+						<label>Czego unikać<input id="e-avoid-all" type="text" value="zniekształcenia, niespójne cienie" /></label>
+						<label>Szczegółowość<select id="e-detail"><option value="medium">Średni</option><option value="short">Krótki</option><option value="detailed">Bardzo dokładny</option></select></label>
+					</div>
+				</div>
+
+				<!-- OUTPUT -->
+				<div>
+					<p style="font-size:.8rem;opacity:.6;margin-bottom:1em">Prompt budowany automatycznie. Skopiuj i wklej do Gemini.</p>
+					<textarea id="prompt-output" class="gen-output" readonly></textarea>
+					<div style="display:flex;gap:10px;margin-top:1em;flex-wrap:wrap">
+						<button id="build-prompt" class="button primary" type="button">Odśwież</button>
+						<button id="copy-generated" class="button" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
+					</div>
+				</div>
+
+			</div><!-- end gen-panels -->
+		</div>
+	</section>
+
+	<!-- Źródła -->
+	<section id="zrodla" class="wrapper style2 special fade">
+		<div class="container">
+			<header>
+				<h2>Źródła i weryfikacja</h2>
+				<p>Oficjalne źródła Google potwierdzające polskie prompty w Gemini</p>
+			</header>
+			<ul style="list-style:none;padding:0;max-width:600px;margin:0 auto 2em;text-align:left">
+				<li style="margin-bottom:.8em"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/gemini-v2" target="_blank"><i class="fas fa-external-link-alt" style="margin-right:8px;font-size:.7rem"></i>Vertex AI — language support for Gemini, including Polish</a></li>
+				<li style="margin-bottom:.8em"><a href="https://ai.google.dev/gemini-api/docs/image-generation" target="_blank"><i class="fas fa-external-link-alt" style="margin-right:8px;font-size:.7rem"></i>Gemini API — image generation guide</a></li>
+				<li style="margin-bottom:.8em"><a href="https://ai.google.dev/gemini-api/docs/imagen?hl=pl" target="_blank"><i class="fas fa-external-link-alt" style="margin-right:8px;font-size:.7rem"></i>Imagen guide — prompts only in English</a></li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<ul class="icons">
+			<li><a href="https://ai.google.dev/gemini-api/docs/image-generation" target="_blank" class="icon solid alt fa-external-link-alt"><span class="label">Gemini API</span></a></li>
+			<li><a href="https://aistudio.google.com" target="_blank" class="icon solid alt fa-flask"><span class="label">AI Studio</span></a></li>
+			<li><a href="https://cloud.google.com/vertex-ai" target="_blank" class="icon solid alt fa-cloud"><span class="label">Vertex AI</span></a></li>
+		</ul>
+		<ul class="copyright">
+			<li>&copy; GeminiPoPolsku 2026</li>
+			<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+		</ul>
+	</footer>
+
+</div>
+
+<!-- Scripts — oryginalne Landed (musisz mieć folder assets/js/) -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="generator.js"></script>
+
+</body>
+</html>
