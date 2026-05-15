@@ -28,7 +28,52 @@ function setFilter(filter) {
     });
 }
 
-/* ── COPY ── */
+/* ── TILE HELPERS ── */
+function selectTile(btn, hiddenId) {
+    var group = btn.parentElement;
+    group.querySelectorAll('.tile').forEach(function(t) { t.classList.remove('on'); });
+    btn.classList.add('on');
+    var hidden = document.getElementById(hiddenId);
+    if (hidden) hidden.value = btn.dataset.val;
+    buildPrompt();
+}
+
+function toggleAdv(toggle) {
+    var body = toggle.nextElementSibling;
+    var icon = toggle.querySelector('.gen-adv-icon');
+    body.classList.toggle('open');
+    icon.textContent = body.classList.contains('open') ? '−' : '+';
+}
+
+/* ── PRESETS ── */
+var presets = {
+    nocny:  { 'n-subject': 'portret kobiety', 'n-subject-type': 'woman', 'n-scene': 'na mokrej ulicy nocą z neonami i odbiciami w kałużach', 'n-style': 'editorial-photo', 'n-light': 'w chłodnych neonowych odbiciach' },
+    studio: { 'n-subject': 'portret kobiety', 'n-subject-type': 'woman', 'n-scene': 'w studiu fotograficznym z białym tłem', 'n-style': 'beauty-photo', 'n-light': 'w miękkim świetle beauty' },
+    natura: { 'n-subject': 'portret kobiety', 'n-subject-type': 'woman', 'n-scene': 'w ogrodzie pełnym zieleni po deszczu', 'n-style': 'lifestyle-photo', 'n-light': 'w ciepłym świetle złotej godziny' },
+    luksus: { 'n-subject': 'elegancki produkt', 'n-subject-type': 'object', 'n-scene': 'w hotel lobby z marmurem', 'n-style': 'luxury-campaign', 'n-light': 'w miękkim równomiernym świetle studyjnym' }
+};
+
+function applyPreset(key, btn) {
+    document.querySelectorAll('.preset-card').forEach(function(c) { c.classList.remove('sel'); });
+    btn.classList.add('sel');
+    var p = presets[key];
+    if (!p) return;
+    Object.keys(p).forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.value = p[id];
+        // sync tiles if this field has a tile group
+        var group = document.getElementById('tiles-' + id);
+        if (group) {
+            group.querySelectorAll('.tile').forEach(function(t) {
+                t.classList.toggle('on', t.dataset.val === p[id]);
+            });
+        }
+    });
+    buildPrompt();
+}
+
+
 function copyText(text, btn) {
     var orig = btn.innerHTML;
     var fallback = function() {
@@ -355,11 +400,14 @@ if (cg) cg.addEventListener('click', function() {
 });
 
 /* ── expose to global scope for onclick handlers ── */
-window.switchGenMode       = switchGenMode;
-window.updateEditSections  = updateEditSections;
+window.switchGenMode         = switchGenMode;
+window.updateEditSections    = updateEditSections;
 window.updateQualitySections = updateQualitySections;
-window.setFilter           = setFilter;
-window.buildPrompt         = buildPrompt;
+window.setFilter             = setFilter;
+window.buildPrompt           = buildPrompt;
+window.selectTile            = selectTile;
+window.toggleAdv             = toggleAdv;
+window.applyPreset           = applyPreset;
 
 /* ── init ── */
 switchGenMode('new');
