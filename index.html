@@ -14,7 +14,7 @@
 .gen-tab:hover{color:rgba(255,255,255,.7);}
 .gen-tab.active{color:#fff;border-bottom-color:#fff;}
 .edit-checks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5em;}
-.check-chip{display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.2);padding:8px 14px;cursor:pointer;color:rgba(255,255,255,.5);transition:all .2s;text-align:center;line-height:1.2;}
+.check-chip{display:inline-flex;align-items:center;gap:7px;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.2);padding:6px 14px;cursor:pointer;color:rgba(255,255,255,.5);transition:all .2s;}
 .check-chip input{width:12px;height:12px;cursor:pointer;accent-color:#fff;}
 .check-chip:has(input:checked){border-color:#fff;color:#fff;background:rgba(255,255,255,.08);}
 .edit-section{border-top:1px solid rgba(255,255,255,.1);padding-top:6px;margin-top:4px;}
@@ -733,151 +733,85 @@
 
 				<!-- POPRAWA JAKOŚCI -->
 				<div id="form-quality" hidden>
-					<div class="form-section-label">Co chcesz poprawić?</div>
-					<div class="edit-checks">
-						<label class="check-chip"><input type="checkbox" value="q-sharpness" onchange="updateQualitySections()"><span>Ostrość</span></label>
-						<label class="check-chip"><input type="checkbox" value="q-noise" onchange="updateQualitySections()"><span>Szumy i ziarno</span></label>
-						<label class="check-chip"><input type="checkbox" value="q-exposure" onchange="updateQualitySections()"><span>Ekspozycja</span></label>
-						<label class="check-chip"><input type="checkbox" value="q-shadows" onchange="updateQualitySections()"><span>Cienie</span></label>
-						<label class="check-chip"><input type="checkbox" value="q-highlights" onchange="updateQualitySections()"><span>Przepalone światła</span></label>
-						<label class="check-chip"><input type="checkbox" value="q-colorcast" onchange="updateQualitySections()"><span>Dominanta kolorów</span></label>
-						<label class="check-chip"><input type="checkbox" value="q-whitebal" onchange="updateQualitySections()"><span>Balans bieli</span></label>
-						<label class="check-chip"><input type="checkbox" value="q-skintone" onchange="updateQualitySections()"><span>Kolor skóry</span></label>
-						<label class="check-chip"><input type="checkbox" value="q-skinretuch" onchange="updateQualitySections()"><span>Retusz skóry</span></label>
-						<label class="check-chip"><input type="checkbox" value="q-horizon" onchange="updateQualitySections()"><span>Horyzont</span></label>
-						<label class="check-chip"><input type="checkbox" value="q-perspective" onchange="updateQualitySections()"><span>Perspektywa</span></label>
+					<div class="form-section-label">Ostrość i szczegóły</div>
+					<div class="form-grid">
+						<label>Ostrość<select id="q-sharpness">
+							<option value="">— nie określam —</option>
+							<option value="subtelne wyostrzenie, zachowaj naturalność">Subtelne</option>
+							<option value="wyraźne wyostrzenie rozmytych partii">Wyraźne</option>
+							<option value="maksymalne wyostrzenie całego kadru">Maksymalne</option>
+						</select></label>
+						<label>Szumy i ziarno<select id="q-noise">
+							<option value="">— nie określam —</option>
+							<option value="delikatna redukcja szumów, zachowaj teksturę">Delikatna redukcja</option>
+							<option value="mocna redukcja szumów z ciemnych partii">Mocna redukcja</option>
+							<option value="usuń cyfrowe szumy zachowując naturalne ziarno">Usuń cyfrowe, zachowaj film</option>
+						</select></label>
 					</div>
-
-					<div class="edit-section" id="qs-sharpness" hidden>
-						<div class="form-section-label">Ostrość — zdjęcie jest rozmyte lub nieotre</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Poziom wyostrzenia<select id="q-sharpness">
-								<option value="">— nie określam —</option>
-								<option value="subtelne wyostrzenie, zachowaj naturalność">Subtelne — delikatna poprawa</option>
-								<option value="wyraźne wyostrzenie rozmytych partii">Wyraźne — zdjęcie wyraźnie rozmyte</option>
-								<option value="maksymalne wyostrzenie całego kadru">Maksymalne — bardzo nieotre zdjęcie</option>
-							</select></label>
-						</div>
+					<div class="form-section-label">Ekspozycja i światło</div>
+					<div class="form-grid">
+						<label>Ekspozycja<select id="q-exposure">
+							<option value="">— nie określam —</option>
+							<option value="rozjaśnij — zdjęcie jest za ciemne">Za ciemne — rozjaśnij</option>
+							<option value="przyciemnij — zdjęcie jest za jasne">Za jasne — przyciemnij</option>
+							<option value="wyważ ekspozycję — zbyt duży kontrast">Wyważ kontrast</option>
+						</select></label>
+						<label>Cienie<select id="q-shadows">
+							<option value="">— nie określam —</option>
+							<option value="odzyskaj detale w zbyt ciemnych cieniach">Odzyskaj detale</option>
+							<option value="rozjaśnij głębokie cienie pod oczami i na twarzy">Rozjaśnij cienie na twarzy</option>
+						</select></label>
+						<label>Przepalone światła<select id="q-highlights">
+							<option value="">— nie określam —</option>
+							<option value="odzyskaj przepalone detale w jasnych partiach">Odzyskaj przepalone</option>
+							<option value="przyciemnij prześwietlone tło zachowując twarz">Przyciemnij tło</option>
+						</select></label>
 					</div>
-
-					<div class="edit-section" id="qs-noise" hidden>
-						<div class="form-section-label">Szumy i ziarno — widoczny cyfrowy szum</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Redukcja szumów<select id="q-noise">
-								<option value="">— nie określam —</option>
-								<option value="delikatna redukcja szumów, zachowaj teksturę">Delikatna — lekkie ziarno</option>
-								<option value="mocna redukcja szumów z ciemnych partii">Mocna — zdjęcie z ciemnego miejsca</option>
-								<option value="usuń cyfrowe szumy zachowując naturalne ziarno">Usuń cyfrowe, zachowaj filmowe</option>
-							</select></label>
-						</div>
+					<div class="form-section-label">Kolory</div>
+					<div class="form-grid">
+						<label>Dominanta kolorów<select id="q-colorcast">
+							<option value="">— nie określam —</option>
+							<option value="usuń żółtą dominantę ze sztucznego oświetlenia">Żółta (sztuczne światło)</option>
+							<option value="usuń zieloną dominantę z oświetlenia fluorescencyjnego">Zielona (jarzeniówka)</option>
+							<option value="usuń niebieską dominantę z cienia lub zachmurzenia">Niebieska (cień / chmury)</option>
+							<option value="usuń nieprawidłową dominantę kolorystyczną">Ogólna korekcja</option>
+						</select></label>
+						<label>Balans bieli<select id="q-whitebal">
+							<option value="">— nie określam —</option>
+							<option value="ocieplij — zdjęcie ma zbyt chłodne tony">Ocieplij</option>
+							<option value="ochłodź — zdjęcie ma zbyt ciepłe tony">Ochłodź</option>
+							<option value="zneutralizuj balans bieli">Zneutralizuj</option>
+						</select></label>
+						<label>Kolor skóry<select id="q-skintone">
+							<option value="">— nie określam —</option>
+							<option value="przywróć naturalny kolor skóry bez przebarwień">Przywróć naturalny</option>
+							<option value="usuń czerwienienia i zaczerwienienia skóry">Usuń zaczerwienienia</option>
+							<option value="wyrównaj nierówny koloryt skóry">Wyrównaj koloryt</option>
+						</select></label>
 					</div>
-
-					<div class="edit-section" id="qs-exposure" hidden>
-						<div class="form-section-label">Ekspozycja — za ciemne lub za jasne</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Korekcja ekspozycji<select id="q-exposure">
-								<option value="">— nie określam —</option>
-								<option value="rozjaśnij — zdjęcie jest za ciemne">Za ciemne — rozjaśnij całe zdjęcie</option>
-								<option value="przyciemnij — zdjęcie jest za jasne">Za jasne — przyciemnij całe zdjęcie</option>
-								<option value="wyważ ekspozycję — zbyt duży kontrast między jasnym i ciemnym">Wyważ — za duży kontrast</option>
-							</select></label>
-						</div>
+					<div class="form-section-label">Skóra i twarz</div>
+					<div class="form-grid">
+						<label>Retusz skóry<select id="q-skinretuch">
+							<option value="">— nie określam —</option>
+							<option value="naturalny retusz — zachowaj pory i teksturę">Naturalny (zachowaj pory)</option>
+							<option value="usuń cienie pod oczami zachowując teksturę">Cienie pod oczami</option>
+							<option value="wygładź skórę bez efektu plastiku">Wygładzenie bez plastiku</option>
+						</select></label>
 					</div>
-
-					<div class="edit-section" id="qs-shadows" hidden>
-						<div class="form-section-label">Cienie — czarne plamy bez detali</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Odzyskanie detali w cieniach<select id="q-shadows">
-								<option value="">— nie określam —</option>
-								<option value="odzyskaj detale w zbyt ciemnych cieniach">Odzyskaj detale w cieniach</option>
-								<option value="rozjaśnij głębokie cienie pod oczami i na twarzy">Rozjaśnij cienie na twarzy / pod oczami</option>
-							</select></label>
-						</div>
+					<div class="form-section-label">Kadr i perspektywa</div>
+					<div class="form-grid">
+						<label>Horyzont<select id="q-horizon">
+							<option value="">— nie określam —</option>
+							<option value="tak">Wyprostuj krzywy horyzont</option>
+						</select></label>
+						<label>Perspektywa<select id="q-perspective">
+							<option value="">— nie określam —</option>
+							<option value="korekcja perspektywy z dołu — linie schodzą się u góry">Zdjęcie z dołu</option>
+							<option value="korekcja perspektywy z góry">Zdjęcie z góry</option>
+							<option value="korekcja beczkowatego zniekształcenia">Zniekształcenie szerokokątne</option>
+						</select></label>
 					</div>
-
-					<div class="edit-section" id="qs-highlights" hidden>
-						<div class="form-section-label">Przepalone światła — białe plamy bez detali</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Odzyskanie detali w światłach<select id="q-highlights">
-								<option value="">— nie określam —</option>
-								<option value="odzyskaj przepalone detale w jasnych partiach">Odzyskaj przepalone fragmenty</option>
-								<option value="przyciemnij prześwietlone tło zachowując twarz">Przyciemnij tylko tło</option>
-							</select></label>
-						</div>
-					</div>
-
-					<div class="edit-section" id="qs-colorcast" hidden>
-						<div class="form-section-label">Dominanta kolorów — zdjęcie ma nieprawidłowy odcień</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Typ dominanty<select id="q-colorcast">
-								<option value="">— nie określam —</option>
-								<option value="usuń żółtą dominantę ze sztucznego oświetlenia">Żółta — sztuczne oświetlenie (żarówki)</option>
-								<option value="usuń zieloną dominantę z oświetlenia fluorescencyjnego">Zielona — jarzeniówki / świetlówki</option>
-								<option value="usuń niebieską dominantę z cienia lub zachmurzenia">Niebieska — cień lub pochmurny dzień</option>
-								<option value="usuń nieprawidłową dominantę kolorystyczną">Inna — ogólna korekcja</option>
-							</select></label>
-						</div>
-					</div>
-
-					<div class="edit-section" id="qs-whitebal" hidden>
-						<div class="form-section-label">Balans bieli — kolory wyglądają nienaturalnie</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Korekta balansu bieli<select id="q-whitebal">
-								<option value="">— nie określam —</option>
-								<option value="ocieplij — zdjęcie ma zbyt chłodne, niebieskie tony">Ocieplij — za zimne, niebieskie</option>
-								<option value="ochłodź — zdjęcie ma zbyt ciepłe, pomarańczowe tony">Ochłodź — za ciepłe, pomarańczowe</option>
-								<option value="zneutralizuj balans bieli do naturalnego dziennego światła">Zneutralizuj do naturalnego</option>
-							</select></label>
-						</div>
-					</div>
-
-					<div class="edit-section" id="qs-skintone" hidden>
-						<div class="form-section-label">Kolor skóry — nienaturalny odcień cery</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Korekcja koloru skóry<select id="q-skintone">
-								<option value="">— nie określam —</option>
-								<option value="przywróć naturalny kolor skóry bez przebarwień">Przywróć naturalny kolor</option>
-								<option value="usuń czerwienienia i zaczerwienienia skóry">Usuń zaczerwienienia</option>
-								<option value="wyrównaj nierówny koloryt skóry">Wyrównaj nierówny koloryt</option>
-							</select></label>
-						</div>
-					</div>
-
-					<div class="edit-section" id="qs-skinretuch" hidden>
-						<div class="form-section-label">Retusz skóry — niedoskonałości i zmęczony wygląd</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Zakres retuszu<select id="q-skinretuch">
-								<option value="">— nie określam —</option>
-								<option value="naturalny retusz — zachowaj pory i teksturę, usuń tylko wyraźne niedoskonałości">Naturalny — zachowaj pory i teksturę</option>
-								<option value="usuń cienie pod oczami zachowując naturalną teksturę">Tylko cienie pod oczami</option>
-								<option value="wygładź skórę zachowując naturalny wygląd bez efektu plastiku">Wygładzenie — bez efektu plastiku</option>
-							</select></label>
-						</div>
-					</div>
-
-					<div class="edit-section" id="qs-horizon" hidden>
-						<div class="form-section-label">Horyzont — zdjęcie jest krzywe</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Wyprostowanie<select id="q-horizon">
-								<option value="">— nie określam —</option>
-								<option value="tak">Wyprostuj krzywy horyzont</option>
-							</select></label>
-						</div>
-					</div>
-
-					<div class="edit-section" id="qs-perspective" hidden>
-						<div class="form-section-label">Perspektywa — zniekształcone linie</div>
-						<div class="form-grid">
-							<label style="grid-column:1/-1">Typ zniekształcenia<select id="q-perspective">
-								<option value="">— nie określam —</option>
-								<option value="korekcja perspektywy z dołu — pionowe linie schodzą się u góry">Zdjęcie z dołu — linie zbiegają się</option>
-								<option value="korekcja perspektywy z góry — obiekt zwęża się ku dołowi">Zdjęcie z góry</option>
-								<option value="korekcja beczkowatego zniekształcenia od szerokiego kąta">Zniekształcenie szerokokątne</option>
-							</select></label>
-						</div>
-					</div>
-
-					<div class="form-section-label" style="margin-top:16px">Ogólne</div>
+					<div class="form-section-label">Ogólne</div>
 					<div class="form-grid">
 						<label>Czego unikać<input id="q-avoid" type="text" value="efekt plastiku, przesadna obróbka" /></label>
 					</div>
