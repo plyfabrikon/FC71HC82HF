@@ -76,6 +76,32 @@ function switchGenMode(mode) {
     buildPrompt();
 }
 
+function updateQualitySections() {
+    var map = {
+        'q-sharpness':   'qs-sharpness',
+        'q-noise':       'qs-noise',
+        'q-exposure':    'qs-exposure',
+        'q-shadows':     'qs-shadows',
+        'q-highlights':  'qs-highlights',
+        'q-colorcast':   'qs-colorcast',
+        'q-whitebal':    'qs-whitebal',
+        'q-skintone':    'qs-skintone',
+        'q-skinretuch':  'qs-skinretuch',
+        'q-horizon':     'qs-horizon',
+        'q-perspective': 'qs-perspective'
+    };
+    var checked = [];
+    document.querySelectorAll('#form-quality .edit-checks input:checked').forEach(function(i) {
+        checked.push(i.value);
+    });
+    Object.keys(map).forEach(function(key) {
+        var el = document.getElementById(map[key]);
+        if (el) el.hidden = (checked.indexOf(key) === -1);
+    });
+    buildPrompt();
+}
+
+
 function updateEditSections() {
     var checked = [];
     document.querySelectorAll('.edit-checks input:checked').forEach(function(i) {
@@ -329,10 +355,11 @@ if (cg) cg.addEventListener('click', function() {
 });
 
 /* ── expose to global scope for onclick handlers ── */
-window.switchGenMode      = switchGenMode;
-window.updateEditSections = updateEditSections;
-window.setFilter          = setFilter;
-window.buildPrompt        = buildPrompt;
+window.switchGenMode       = switchGenMode;
+window.updateEditSections  = updateEditSections;
+window.updateQualitySections = updateQualitySections;
+window.setFilter           = setFilter;
+window.buildPrompt         = buildPrompt;
 
 /* ── init ── */
 switchGenMode('new');
