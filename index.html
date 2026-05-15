@@ -13,8 +13,41 @@
 .gen-tab{padding:.6em 1.5em;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,.4);cursor:pointer;transition:all .2s;font-family:inherit;margin-bottom:-1px;}
 .gen-tab:hover{color:rgba(255,255,255,.7);}
 .gen-tab.active{color:#fff;border-bottom-color:#fff;}
+
+/* ── SECTION LABELS ── */
+.gen-section-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:18px 0 10px;display:flex;align-items:center;gap:7px;}
+.gen-section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07);}
+
+/* ── PRESETS ── */
+.preset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:4px;}
+.preset-card{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);padding:12px 10px;cursor:pointer;transition:all .2s;text-align:left;display:flex;flex-direction:column;gap:4px;font-family:inherit;}
+.preset-card:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);}
+.preset-card.sel{border-color:#fff;background:rgba(255,255,255,.06);}
+.preset-icon{font-size:20px;line-height:1;display:block;}
+.preset-name{font-size:11px;font-weight:600;color:#f0ece6;letter-spacing:.04em;display:block;}
+.preset-desc{font-size:10px;color:rgba(255,255,255,.35);display:block;line-height:1.4;}
+
+/* ── OR DIVIDER ── */
+.gen-or-divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:rgba(255,255,255,.2);font-size:10px;letter-spacing:.14em;text-transform:uppercase;}
+.gen-or-divider::before,.gen-or-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07);}
+
+/* ── TILES ── */
+.tile-group{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;}
+.tile{padding:7px 13px;font-size:11px;letter-spacing:.07em;text-transform:uppercase;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);cursor:pointer;transition:all .18s;background:transparent;font-family:inherit;white-space:nowrap;}
+.tile:hover{border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.8);}
+.tile.on{border-color:#fff;color:#fff;background:rgba(255,255,255,.07);}
+.tile.tile-none{border-style:dashed;color:rgba(255,255,255,.25);}
+.tile.tile-none.on{border-style:solid;color:rgba(255,255,255,.5);}
+
+/* ── ADVANCED TOGGLE ── */
+.gen-adv-toggle{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px dashed rgba(255,255,255,.1);cursor:pointer;color:rgba(255,255,255,.3);font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-top:18px;transition:all .2s;user-select:none;font-family:inherit;}
+.gen-adv-toggle:hover{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.55);}
+.gen-adv-icon{font-size:16px;line-height:1;flex-shrink:0;}
+.gen-adv-badge{margin-left:auto;font-size:9px;padding:2px 7px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.2);}
+.gen-adv-body{display:none;border:1px dashed rgba(255,255,255,.07);border-top:none;padding:14px 14px 6px;}
+.gen-adv-body.open{display:block;}
 .edit-checks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5em;}
-.check-chip{display:inline-flex;align-items:center;gap:7px;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.2);padding:6px 14px;cursor:pointer;color:rgba(255,255,255,.5);transition:all .2s;}
+.check-chip{display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.2);padding:8px 14px;cursor:pointer;color:rgba(255,255,255,.5);transition:all .2s;text-align:center;line-height:1.2;}
 .check-chip input{width:12px;height:12px;cursor:pointer;accent-color:#fff;}
 .check-chip:has(input:checked){border-color:#fff;color:#fff;background:rgba(255,255,255,.08);}
 .edit-section{border-top:1px solid rgba(255,255,255,.1);padding-top:6px;margin-top:4px;}
@@ -266,19 +299,48 @@
 			</header>
 
 			<!-- Zakładki -->
-			<div style="display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:1.5em">
+			<div style="display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:28px">
 				<button class="gen-tab active" id="tab-new"     type="button" onclick="switchGenMode('new')">Nowy obraz</button>
 				<button class="gen-tab"        id="tab-edit"    type="button" onclick="switchGenMode('edit')">Edycja zdjęcia</button>
 				<button class="gen-tab"        id="tab-quality" type="button" onclick="switchGenMode('quality')">Poprawa jakości</button>
 			</div>
 
-			<div class="gen-panels" style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:2em;text-align:left">
+			<div class="gen-panels" style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:0;text-align:left">
 
-				<!-- NOWY OBRAZ -->
-				<div id="form-new">
-					<div class="form-section-label">Co wygenerować</div>
+				<!-- ════ NOWY OBRAZ ════ -->
+				<div id="form-new" style="padding-right:28px;border-right:1px solid rgba(255,255,255,.07)">
+
+					<!-- PRESETS -->
+					<div class="gen-section-label">Zacznij od szablonu</div>
+					<div class="preset-grid">
+						<button class="preset-card" data-preset="nocny" onclick="applyPreset('nocny',this)">
+							<span class="preset-icon">🌃</span>
+							<span class="preset-name">Portret nocny</span>
+							<span class="preset-desc">Neonowa ulica, editorial</span>
+						</button>
+						<button class="preset-card" data-preset="studio" onclick="applyPreset('studio',this)">
+							<span class="preset-icon">📸</span>
+							<span class="preset-name">Studio czyste</span>
+							<span class="preset-desc">Białe tło, soft beauty</span>
+						</button>
+						<button class="preset-card" data-preset="natura" onclick="applyPreset('natura',this)">
+							<span class="preset-icon">🌿</span>
+							<span class="preset-name">Natura &amp; złote</span>
+							<span class="preset-desc">Plener, golden hour</span>
+						</button>
+						<button class="preset-card" data-preset="luksus" onclick="applyPreset('luksus',this)">
+							<span class="preset-icon">🏛️</span>
+							<span class="preset-name">Luksusowe wnętrze</span>
+							<span class="preset-desc">Hotel lobby, kampania</span>
+						</button>
+					</div>
+
+					<div class="gen-or-divider"><span>lub zbuduj od zera</span></div>
+
+					<!-- TEMAT -->
+					<div class="gen-section-label">✦ Co wygenerować</div>
 					<div class="form-grid">
-						<label>Główny temat<input id="n-subject" type="text" value="elegancką ceramiczną lampę" /></label>
+						<label>Główny temat / obiekt<input id="n-subject" type="text" value="elegancką ceramiczną lampę" /></label>
 						<label>Rodzaj tematu<select id="n-subject-type">
 							<option value="object">Produkt / przedmiot</option>
 							<option value="woman">Kobieta</option>
@@ -320,96 +382,109 @@
 							</optgroup>
 						</select></label>
 					</div>
-					<div class="form-section-label">Fotografia</div>
-					<div class="form-grid">
-						<label>Styl<select id="n-style">
-							<optgroup label="Fotografia">
-								<option value="editorial-photo">Editorial</option>
-								<option value="studio-photo">Studyjna</option>
-								<option value="fashion-photo">Modowa</option>
-								<option value="beauty-photo">Beauty</option>
-								<option value="product-photo">Produktowa</option>
-								<option value="street-photo">Uliczna</option>
-								<option value="lifestyle-photo">Lifestyle</option>
-								<option value="food-photo">Food</option>
-							</optgroup>
-							<optgroup label="Artystyczne">
-								<option value="luxury-campaign">Luksusowa kampania</option>
-								<option value="dark-moody">Dark &amp; moody</option>
-								<option value="light-airy">Light &amp; airy</option>
-								<option value="vintage-film">Vintage film</option>
-								<option value="fine-art">Fine art</option>
-								<option value="concept-art">Concept art</option>
-							</optgroup>
-						</select></label>
-						<label>Oświetlenie<select id="n-light">
-							<optgroup label="Naturalne">
-								<option value="w miękkim porannym świetle">Poranek</option>
-								<option value="w ciepłym świetle złotej godziny">Golden hour</option>
-								<option value="w delikatnym świetle z dużego okna">Światło z okna</option>
-								<option value="w pochmurnym miękkim świetle dziennym">Pochmurne</option>
-								<option value="o świcie — różowo-złote niebo">Świt</option>
-								<option value="o zmierzchu — blue hour">Blue hour</option>
-								<option value="w plamkach słońca przez liście">Plamki słońca</option>
-							</optgroup>
-							<optgroup label="Sztuczne">
-								<option value="w miękkim równomiernym świetle studyjnym">Miękkie studyjne</option>
-								<option value="w dramatycznym bocznym świetle">Dramatyczne boczne</option>
-								<option value="w miękkim świetle beauty">Soft beauty</option>
-								<option value="w podświetleniu backlight">Backlight</option>
-								<option value="w świetle świec">Świece</option>
-								<option value="w chłodnych neonowych odbiciach">Neonowe</option>
-								<option value="rembrandt lighting">Rembrandt</option>
-							</optgroup>
-						</select></label>
-						<label>Kadr<select id="n-crop">
-							<option value="pokazując wyłącznie samą twarz">Sama twarz</option>
-							<option value="w portrecie do ramion">Do ramion</option>
-							<option value="w ujęciu do pasa">Do pasa</option>
-							<option value="w ujęciu od kolan w górę">Trzy czwarte</option>
-							<option value="pokazując całą postać">Cała postać</option>
-							<option value="jako zbliżenie produktu">Zbliżenie produktu</option>
-							<option value="w szerokim planie">Szeroki plan</option>
-						</select></label>
-						<label>Optyka<select id="n-frame">
-							<option value="z obiektywem 24mm">24 mm</option>
-							<option value="z obiektywem 35mm">35 mm</option>
-							<option value="z obiektywem 50mm">50 mm</option>
-							<option value="z obiektywem 85mm portretowym">85 mm portretowy</option>
-							<option value="z obiektywem 135mm">135 mm</option>
-							<option value="z obiektywem makro">Makro</option>
-							<option value="w centralnej kompozycji">Centralna kompozycja</option>
-						</select></label>
-						<label>Efekt<select id="n-effect">
-							<option value="">— brak —</option>
-							<option value="z delikatnym bokeh">Delikatny bokeh</option>
-							<option value="z mocnym kremowym bokeh">Mocny bokeh</option>
-							<option value="z dużą ostrością">Pełna ostrość</option>
-							<option value="z ziarnem filmowym">Ziarno filmowe</option>
-							<option value="z winietą">Winieta</option>
-							<option value="z motion blur">Motion blur</option>
-						</select></label>
-						<label>Priorytet<select id="n-constraint">
-							<option value="clean">Czysto i elegancko</option>
-							<option value="identity">Zachowaj tożsamość</option>
-							<option value="text">Czytelny tekst</option>
-							<option value="pose">Naturalna poza</option>
-						</select></label>
+
+					<!-- STYL — kafelki -->
+					<div class="gen-section-label">🎨 Styl fotografii</div>
+					<div class="tile-group" id="tiles-n-style">
+						<button class="tile" data-val="editorial-photo" onclick="selectTile(this,'n-style')">Editorial</button>
+						<button class="tile" data-val="studio-photo" onclick="selectTile(this,'n-style')">Studyjna</button>
+						<button class="tile" data-val="fashion-photo" onclick="selectTile(this,'n-style')">Modowa</button>
+						<button class="tile" data-val="beauty-photo" onclick="selectTile(this,'n-style')">Beauty</button>
+						<button class="tile" data-val="product-photo" onclick="selectTile(this,'n-style')">Produktowa</button>
+						<button class="tile" data-val="street-photo" onclick="selectTile(this,'n-style')">Uliczna</button>
+						<button class="tile" data-val="lifestyle-photo" onclick="selectTile(this,'n-style')">Lifestyle</button>
+						<button class="tile" data-val="food-photo" onclick="selectTile(this,'n-style')">Food</button>
+						<button class="tile" data-val="luxury-campaign" onclick="selectTile(this,'n-style')">Luksusowa kampania</button>
+						<button class="tile" data-val="dark-moody" onclick="selectTile(this,'n-style')">Dark &amp; moody</button>
+						<button class="tile" data-val="light-airy" onclick="selectTile(this,'n-style')">Light &amp; airy</button>
+						<button class="tile" data-val="vintage-film" onclick="selectTile(this,'n-style')">Vintage film</button>
+						<button class="tile" data-val="fine-art" onclick="selectTile(this,'n-style')">Fine art</button>
+						<button class="tile" data-val="concept-art" onclick="selectTile(this,'n-style')">Concept art</button>
 					</div>
-					<div class="form-section-label">Szczegółowość</div>
-					<div class="form-grid">
-						<label>Poziom<select id="n-detail">
-							<option value="medium">Średni</option>
-							<option value="short">Krótki</option>
-							<option value="detailed">Bardzo dokładny</option>
-						</select></label>
-						<label>Czego unikać<input id="n-avoid" type="text" value="chaotyczne tło, sztuczny wygląd" /></label>
+					<input type="hidden" id="n-style" value="editorial-photo" />
+
+					<!-- OŚWIETLENIE — kafelki -->
+					<div class="gen-section-label">💡 Oświetlenie</div>
+					<div class="tile-group" id="tiles-n-light">
+						<button class="tile" data-val="w miękkim porannym świetle" onclick="selectTile(this,'n-light')">Poranek</button>
+						<button class="tile" data-val="w ciepłym świetle złotej godziny" onclick="selectTile(this,'n-light')">Golden hour</button>
+						<button class="tile" data-val="w delikatnym świetle z dużego okna" onclick="selectTile(this,'n-light')">Światło z okna</button>
+						<button class="tile" data-val="w pochmurnym miękkim świetle dziennym" onclick="selectTile(this,'n-light')">Pochmurne</button>
+						<button class="tile" data-val="o świcie — różowo-złote niebo" onclick="selectTile(this,'n-light')">Świt</button>
+						<button class="tile" data-val="o zmierzchu — blue hour" onclick="selectTile(this,'n-light')">Blue hour</button>
+						<button class="tile" data-val="w miękkim równomiernym świetle studyjnym" onclick="selectTile(this,'n-light')">Studyjne</button>
+						<button class="tile" data-val="w dramatycznym bocznym świetle" onclick="selectTile(this,'n-light')">Dramatyczne boczne</button>
+						<button class="tile" data-val="w miękkim świetle beauty" onclick="selectTile(this,'n-light')">Soft beauty</button>
+						<button class="tile" data-val="w podświetleniu backlight" onclick="selectTile(this,'n-light')">Backlight</button>
+						<button class="tile" data-val="w chłodnych neonowych odbiciach" onclick="selectTile(this,'n-light')">Neonowe</button>
+						<button class="tile" data-val="w świetle świec" onclick="selectTile(this,'n-light')">Świece</button>
+						<button class="tile" data-val="rembrandt lighting" onclick="selectTile(this,'n-light')">Rembrandt</button>
+					</div>
+					<input type="hidden" id="n-light" value="w miękkim porannym świetle" />
+
+					<!-- ZAAWANSOWANE -->
+					<div class="gen-adv-toggle" onclick="toggleAdv(this)">
+						<span class="gen-adv-icon">+</span>
+						Zaawansowane opcje
+						<span class="gen-adv-badge">opcjonalne</span>
+					</div>
+					<div class="gen-adv-body">
+						<!-- KADR -->
+						<div class="gen-section-label">📐 Kadr</div>
+						<div class="tile-group" id="tiles-n-crop">
+							<button class="tile" data-val="pokazując wyłącznie samą twarz" onclick="selectTile(this,'n-crop')">Sama twarz</button>
+							<button class="tile" data-val="w portrecie do ramion" onclick="selectTile(this,'n-crop')">Do ramion</button>
+							<button class="tile" data-val="w ujęciu do pasa" onclick="selectTile(this,'n-crop')">Do pasa</button>
+							<button class="tile" data-val="w ujęciu od kolan w górę" onclick="selectTile(this,'n-crop')">Trzy czwarte</button>
+							<button class="tile" data-val="pokazując całą postać" onclick="selectTile(this,'n-crop')">Cała postać</button>
+							<button class="tile" data-val="jako zbliżenie produktu" onclick="selectTile(this,'n-crop')">Zbliżenie produktu</button>
+							<button class="tile" data-val="w szerokim planie" onclick="selectTile(this,'n-crop')">Szeroki plan</button>
+							<button class="tile tile-none on" data-val="" onclick="selectTile(this,'n-crop')">— brak —</button>
+						</div>
+						<input type="hidden" id="n-crop" value="" />
+
+						<!-- OPTYKA -->
+						<div class="gen-section-label">🔭 Optyka</div>
+						<div class="tile-group" id="tiles-n-frame">
+							<button class="tile" data-val="z obiektywem 24mm" onclick="selectTile(this,'n-frame')">24 mm</button>
+							<button class="tile" data-val="z obiektywem 35mm" onclick="selectTile(this,'n-frame')">35 mm</button>
+							<button class="tile" data-val="z obiektywem 50mm" onclick="selectTile(this,'n-frame')">50 mm</button>
+							<button class="tile" data-val="z obiektywem 85mm portretowym" onclick="selectTile(this,'n-frame')">85 mm portretowy</button>
+							<button class="tile" data-val="z obiektywem 135mm" onclick="selectTile(this,'n-frame')">135 mm</button>
+							<button class="tile" data-val="z obiektywem makro" onclick="selectTile(this,'n-frame')">Makro</button>
+							<button class="tile" data-val="w centralnej kompozycji" onclick="selectTile(this,'n-frame')">Centralna kompozycja</button>
+							<button class="tile tile-none on" data-val="" onclick="selectTile(this,'n-frame')">— brak —</button>
+						</div>
+						<input type="hidden" id="n-frame" value="" />
+
+						<!-- EFEKT -->
+						<div class="gen-section-label">✨ Efekt</div>
+						<div class="tile-group" id="tiles-n-effect">
+							<button class="tile tile-none on" data-val="" onclick="selectTile(this,'n-effect')">— brak —</button>
+							<button class="tile" data-val="z delikatnym bokeh" onclick="selectTile(this,'n-effect')">Delikatny bokeh</button>
+							<button class="tile" data-val="z mocnym kremowym bokeh" onclick="selectTile(this,'n-effect')">Mocny bokeh</button>
+							<button class="tile" data-val="z dużą ostrością" onclick="selectTile(this,'n-effect')">Pełna ostrość</button>
+							<button class="tile" data-val="z ziarnem filmowym" onclick="selectTile(this,'n-effect')">Ziarno filmowe</button>
+							<button class="tile" data-val="z winietą" onclick="selectTile(this,'n-effect')">Winieta</button>
+							<button class="tile" data-val="z motion blur" onclick="selectTile(this,'n-effect')">Motion blur</button>
+							<button class="tile" data-val="z lens flare" onclick="selectTile(this,'n-effect')">Lens flare</button>
+						</div>
+						<input type="hidden" id="n-effect" value="" />
+
+						<div class="form-grid" style="margin-top:14px">
+							<label>Poziom szczegółowości<select id="n-detail">
+								<option value="medium">Średni</option>
+								<option value="short">Krótki</option>
+								<option value="detailed">Bardzo dokładny</option>
+							</select></label>
+							<label>Czego unikać<input id="n-avoid" type="text" value="chaotyczne tło, sztuczny wygląd" /></label>
+						</div>
 					</div>
 				</div>
 
-				<!-- EDYCJA -->
-				<div id="form-edit" hidden>
-					<div class="form-section-label">Co chcesz zmienić?</div>
+				<!-- ════ EDYCJA ZDJĘCIA ════ -->
+				<div id="form-edit" hidden style="padding-right:28px;border-right:1px solid rgba(255,255,255,.07)">
+					<div class="gen-section-label">Co chcesz zmienić?</div>
 					<div class="edit-checks">
 						<label class="check-chip"><input type="checkbox" value="bg" onchange="updateEditSections()"><span>Tło / lokacja</span></label>
 						<label class="check-chip"><input type="checkbox" value="light" onchange="updateEditSections()"><span>Oświetlenie</span></label>
@@ -425,7 +500,7 @@
 					</div>
 
 					<div class="edit-section" id="es-bg" hidden>
-						<div class="form-section-label">Tło</div>
+						<div class="gen-section-label">🏙️ Tło</div>
 						<div class="form-grid">
 							<label>Wnętrze<select id="e-bg-indoor">
 								<option value="">— nie wybieram —</option>
@@ -455,7 +530,7 @@
 					</div>
 
 					<div class="edit-section" id="es-light" hidden>
-						<div class="form-section-label">Oświetlenie</div>
+						<div class="gen-section-label">💡 Oświetlenie</div>
 						<div class="form-grid">
 							<label>Źródło<select id="e-light-source">
 								<option value="">— nie określam —</option>
@@ -481,7 +556,7 @@
 					</div>
 
 					<div class="edit-section" id="es-lens" hidden>
-						<div class="form-section-label">Obiektyw</div>
+						<div class="gen-section-label">🔭 Obiektyw</div>
 						<div class="form-grid">
 							<label>Ogniskowa<select id="e-lens-focal">
 								<option value="">— nie określam —</option>
@@ -502,7 +577,7 @@
 					</div>
 
 					<div class="edit-section" id="es-weather" hidden>
-						<div class="form-section-label">Efekty atmosferyczne</div>
+						<div class="gen-section-label">🌧️ Efekty atmosferyczne</div>
 						<div class="form-grid">
 							<label>Efekt pogodowy<select id="e-weather-type">
 								<option value="">— brak —</option>
@@ -531,7 +606,7 @@
 					</div>
 
 					<div class="edit-section" id="es-outfit" hidden>
-						<div class="form-section-label">Strój</div>
+						<div class="gen-section-label">👗 Strój</div>
 						<div class="form-grid">
 							<label>Typ stroju<select id="e-outfit-type">
 								<option value="">— nie określam —</option>
@@ -565,7 +640,7 @@
 					</div>
 
 					<div class="edit-section" id="es-hair" hidden>
-						<div class="form-section-label">Fryzura / włosy</div>
+						<div class="gen-section-label">💇 Fryzura / włosy</div>
 						<div class="form-grid">
 							<label>Fryzura<select id="e-hair-style">
 								<option value="">— nie określam —</option>
@@ -597,7 +672,7 @@
 					</div>
 
 					<div class="edit-section" id="es-makeup" hidden>
-						<div class="form-section-label">Makijaż</div>
+						<div class="gen-section-label">💄 Makijaż</div>
 						<div class="form-grid">
 							<label>Typ makijażu<select id="e-makeup-type">
 								<option value="">— nie określam —</option>
@@ -623,7 +698,7 @@
 					</div>
 
 					<div class="edit-section" id="es-style" hidden>
-						<div class="form-section-label">Styl / estetyka</div>
+						<div class="gen-section-label">🎨 Styl / estetyka</div>
 						<div class="form-grid">
 							<label>Styl<select id="e-style-target">
 								<option value="">— nie określam —</option>
@@ -645,7 +720,7 @@
 					</div>
 
 					<div class="edit-section" id="es-colorgrade" hidden>
-						<div class="form-section-label">Paleta kolorów</div>
+						<div class="gen-section-label">🌈 Paleta kolorów</div>
 						<div class="form-grid">
 							<label>Paleta<select id="e-color-target">
 								<option value="">— nie określam —</option>
@@ -666,48 +741,19 @@
 					</div>
 
 					<div class="edit-section" id="es-refresh" hidden>
-						<div class="form-section-label">Poprawa jakości</div>
+						<div class="gen-section-label">⚡ Poprawa jakości</div>
 						<div class="form-grid">
-							<label>Ostrość<select id="e-q-sharpness">
-								<option value="">— nie określam —</option>
-								<option value="subtelne wyostrzenie">Subtelne</option>
-								<option value="wyraźne wyostrzenie">Wyraźne</option>
-								<option value="maksymalne wyostrzenie">Maksymalne</option>
-							</select></label>
-							<label>Szumy<select id="e-q-noise">
-								<option value="">— nie określam —</option>
-								<option value="delikatna redukcja szumów">Delikatna</option>
-								<option value="mocna redukcja szumów">Mocna</option>
-							</select></label>
-							<label>Ekspozycja<select id="e-q-exposure">
-								<option value="">— nie określam —</option>
-								<option value="rozjaśnij — za ciemne">Za ciemne</option>
-								<option value="przyciemnij — za jasne">Za jasne</option>
-								<option value="wyważ kontrast">Wyważ kontrast</option>
-							</select></label>
-							<label>Dominanta<select id="e-q-colorcast">
-								<option value="">— nie określam —</option>
-								<option value="usuń żółtą dominantę">Żółta</option>
-								<option value="usuń zieloną dominantę">Zielona</option>
-								<option value="usuń niebieską dominantę">Niebieska</option>
-							</select></label>
-							<label>Balans bieli<select id="e-q-whitebal">
-								<option value="">— nie określam —</option>
-								<option value="ocieplij">Ocieplij</option>
-								<option value="ochłodź">Ochłodź</option>
-								<option value="zneutralizuj">Zneutralizuj</option>
-							</select></label>
-							<label>Retusz skóry<select id="e-q-skinretuch">
-								<option value="">— nie określam —</option>
-								<option value="naturalny retusz — zachowaj pory">Naturalny</option>
-								<option value="usuń cienie pod oczami">Cienie pod oczami</option>
-								<option value="wygładź skórę bez efektu plastiku">Wygładzenie</option>
-							</select></label>
+							<label>Ostrość<select id="e-q-sharpness"><option value="">— nie określam —</option><option value="subtelne wyostrzenie">Subtelne</option><option value="wyraźne wyostrzenie">Wyraźne</option><option value="maksymalne wyostrzenie">Maksymalne</option></select></label>
+							<label>Szumy<select id="e-q-noise"><option value="">— nie określam —</option><option value="delikatna redukcja szumów">Delikatna</option><option value="mocna redukcja szumów">Mocna</option></select></label>
+							<label>Ekspozycja<select id="e-q-exposure"><option value="">— nie określam —</option><option value="rozjaśnij — za ciemne">Za ciemne</option><option value="przyciemnij — za jasne">Za jasne</option><option value="wyważ kontrast">Wyważ kontrast</option></select></label>
+							<label>Dominanta<select id="e-q-colorcast"><option value="">— nie określam —</option><option value="usuń żółtą dominantę">Żółta</option><option value="usuń zieloną dominantę">Zielona</option><option value="usuń niebieską dominantę">Niebieska</option></select></label>
+							<label>Balans bieli<select id="e-q-whitebal"><option value="">— nie określam —</option><option value="ocieplij">Ocieplij</option><option value="ochłodź">Ochłodź</option><option value="zneutralizuj">Zneutralizuj</option></select></label>
+							<label>Retusz skóry<select id="e-q-skinretuch"><option value="">— nie określam —</option><option value="naturalny retusz — zachowaj pory">Naturalny</option><option value="usuń cienie pod oczami">Cienie pod oczami</option><option value="wygładź skórę bez efektu plastiku">Wygładzenie</option></select></label>
 						</div>
 					</div>
 
 					<div class="edit-section" id="es-remove" hidden>
-						<div class="form-section-label">Usuń elementy</div>
+						<div class="gen-section-label">🗑️ Usuń elementy</div>
 						<div class="form-grid">
 							<label style="grid-column:1/-1">Co usunąć<input id="e-remove-what" type="text" value="kable, napisy, przechodnie w tle" /></label>
 							<label>Uzupełnij<select id="e-remove-fill">
@@ -719,7 +765,7 @@
 						</div>
 					</div>
 
-					<div class="form-section-label" style="margin-top:20px">Ogólne</div>
+					<div class="gen-section-label" style="margin-top:20px">⚙️ Ogólne</div>
 					<div class="form-grid">
 						<label>Co zachować<input id="e-preserve-all" type="text" value="twarz, rysy, proporcje" /></label>
 						<label>Czego unikać<input id="e-avoid-all" type="text" value="zniekształcenia, niespójne cienie" /></label>
@@ -731,97 +777,79 @@
 					</div>
 				</div>
 
-				<!-- POPRAWA JAKOŚCI -->
-				<div id="form-quality" hidden>
-					<div class="form-section-label">Ostrość i szczegóły</div>
-					<div class="form-grid">
-						<label>Ostrość<select id="q-sharpness">
-							<option value="">— nie określam —</option>
-							<option value="subtelne wyostrzenie, zachowaj naturalność">Subtelne</option>
-							<option value="wyraźne wyostrzenie rozmytych partii">Wyraźne</option>
-							<option value="maksymalne wyostrzenie całego kadru">Maksymalne</option>
-						</select></label>
-						<label>Szumy i ziarno<select id="q-noise">
-							<option value="">— nie określam —</option>
-							<option value="delikatna redukcja szumów, zachowaj teksturę">Delikatna redukcja</option>
-							<option value="mocna redukcja szumów z ciemnych partii">Mocna redukcja</option>
-							<option value="usuń cyfrowe szumy zachowując naturalne ziarno">Usuń cyfrowe, zachowaj film</option>
-						</select></label>
+				<!-- ════ POPRAWA JAKOŚCI ════ -->
+				<div id="form-quality" hidden style="padding-right:28px;border-right:1px solid rgba(255,255,255,.07)">
+					<div class="gen-section-label">Co chcesz poprawić?</div>
+					<div class="edit-checks">
+						<label class="check-chip"><input type="checkbox" value="q-sharpness" onchange="updateQualitySections()"><span>Ostrość</span></label>
+						<label class="check-chip"><input type="checkbox" value="q-noise" onchange="updateQualitySections()"><span>Szumy i ziarno</span></label>
+						<label class="check-chip"><input type="checkbox" value="q-exposure" onchange="updateQualitySections()"><span>Ekspozycja</span></label>
+						<label class="check-chip"><input type="checkbox" value="q-shadows" onchange="updateQualitySections()"><span>Cienie</span></label>
+						<label class="check-chip"><input type="checkbox" value="q-highlights" onchange="updateQualitySections()"><span>Przepalone światła</span></label>
+						<label class="check-chip"><input type="checkbox" value="q-colorcast" onchange="updateQualitySections()"><span>Dominanta kolorów</span></label>
+						<label class="check-chip"><input type="checkbox" value="q-whitebal" onchange="updateQualitySections()"><span>Balans bieli</span></label>
+						<label class="check-chip"><input type="checkbox" value="q-skintone" onchange="updateQualitySections()"><span>Kolor skóry</span></label>
+						<label class="check-chip"><input type="checkbox" value="q-skinretuch" onchange="updateQualitySections()"><span>Retusz skóry</span></label>
+						<label class="check-chip"><input type="checkbox" value="q-horizon" onchange="updateQualitySections()"><span>Horyzont</span></label>
+						<label class="check-chip"><input type="checkbox" value="q-perspective" onchange="updateQualitySections()"><span>Perspektywa</span></label>
 					</div>
-					<div class="form-section-label">Ekspozycja i światło</div>
-					<div class="form-grid">
-						<label>Ekspozycja<select id="q-exposure">
-							<option value="">— nie określam —</option>
-							<option value="rozjaśnij — zdjęcie jest za ciemne">Za ciemne — rozjaśnij</option>
-							<option value="przyciemnij — zdjęcie jest za jasne">Za jasne — przyciemnij</option>
-							<option value="wyważ ekspozycję — zbyt duży kontrast">Wyważ kontrast</option>
-						</select></label>
-						<label>Cienie<select id="q-shadows">
-							<option value="">— nie określam —</option>
-							<option value="odzyskaj detale w zbyt ciemnych cieniach">Odzyskaj detale</option>
-							<option value="rozjaśnij głębokie cienie pod oczami i na twarzy">Rozjaśnij cienie na twarzy</option>
-						</select></label>
-						<label>Przepalone światła<select id="q-highlights">
-							<option value="">— nie określam —</option>
-							<option value="odzyskaj przepalone detale w jasnych partiach">Odzyskaj przepalone</option>
-							<option value="przyciemnij prześwietlone tło zachowując twarz">Przyciemnij tło</option>
-						</select></label>
+
+					<div class="edit-section" id="qs-sharpness" hidden>
+						<div class="gen-section-label">🔍 Ostrość — zdjęcie jest rozmyte</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Poziom wyostrzenia<select id="q-sharpness"><option value="">— nie określam —</option><option value="subtelne wyostrzenie, zachowaj naturalność">Subtelne</option><option value="wyraźne wyostrzenie rozmytych partii">Wyraźne</option><option value="maksymalne wyostrzenie całego kadru">Maksymalne</option></select></label></div>
 					</div>
-					<div class="form-section-label">Kolory</div>
-					<div class="form-grid">
-						<label>Dominanta kolorów<select id="q-colorcast">
-							<option value="">— nie określam —</option>
-							<option value="usuń żółtą dominantę ze sztucznego oświetlenia">Żółta (sztuczne światło)</option>
-							<option value="usuń zieloną dominantę z oświetlenia fluorescencyjnego">Zielona (jarzeniówka)</option>
-							<option value="usuń niebieską dominantę z cienia lub zachmurzenia">Niebieska (cień / chmury)</option>
-							<option value="usuń nieprawidłową dominantę kolorystyczną">Ogólna korekcja</option>
-						</select></label>
-						<label>Balans bieli<select id="q-whitebal">
-							<option value="">— nie określam —</option>
-							<option value="ocieplij — zdjęcie ma zbyt chłodne tony">Ocieplij</option>
-							<option value="ochłodź — zdjęcie ma zbyt ciepłe tony">Ochłodź</option>
-							<option value="zneutralizuj balans bieli">Zneutralizuj</option>
-						</select></label>
-						<label>Kolor skóry<select id="q-skintone">
-							<option value="">— nie określam —</option>
-							<option value="przywróć naturalny kolor skóry bez przebarwień">Przywróć naturalny</option>
-							<option value="usuń czerwienienia i zaczerwienienia skóry">Usuń zaczerwienienia</option>
-							<option value="wyrównaj nierówny koloryt skóry">Wyrównaj koloryt</option>
-						</select></label>
+					<div class="edit-section" id="qs-noise" hidden>
+						<div class="gen-section-label">📡 Szumy i ziarno — widoczny cyfrowy szum</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Redukcja<select id="q-noise"><option value="">— nie określam —</option><option value="delikatna redukcja szumów, zachowaj teksturę">Delikatna</option><option value="mocna redukcja szumów z ciemnych partii">Mocna</option><option value="usuń cyfrowe szumy zachowując naturalne ziarno">Usuń cyfrowe, zachowaj film</option></select></label></div>
 					</div>
-					<div class="form-section-label">Skóra i twarz</div>
-					<div class="form-grid">
-						<label>Retusz skóry<select id="q-skinretuch">
-							<option value="">— nie określam —</option>
-							<option value="naturalny retusz — zachowaj pory i teksturę">Naturalny (zachowaj pory)</option>
-							<option value="usuń cienie pod oczami zachowując teksturę">Cienie pod oczami</option>
-							<option value="wygładź skórę bez efektu plastiku">Wygładzenie bez plastiku</option>
-						</select></label>
+					<div class="edit-section" id="qs-exposure" hidden>
+						<div class="gen-section-label">☀️ Ekspozycja — za ciemne lub za jasne</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Korekcja<select id="q-exposure"><option value="">— nie określam —</option><option value="rozjaśnij — zdjęcie jest za ciemne">Za ciemne — rozjaśnij</option><option value="przyciemnij — zdjęcie jest za jasne">Za jasne — przyciemnij</option><option value="wyważ ekspozycję — zbyt duży kontrast">Wyważ kontrast</option></select></label></div>
 					</div>
-					<div class="form-section-label">Kadr i perspektywa</div>
-					<div class="form-grid">
-						<label>Horyzont<select id="q-horizon">
-							<option value="">— nie określam —</option>
-							<option value="tak">Wyprostuj krzywy horyzont</option>
-						</select></label>
-						<label>Perspektywa<select id="q-perspective">
-							<option value="">— nie określam —</option>
-							<option value="korekcja perspektywy z dołu — linie schodzą się u góry">Zdjęcie z dołu</option>
-							<option value="korekcja perspektywy z góry">Zdjęcie z góry</option>
-							<option value="korekcja beczkowatego zniekształcenia">Zniekształcenie szerokokątne</option>
-						</select></label>
+					<div class="edit-section" id="qs-shadows" hidden>
+						<div class="gen-section-label">🌑 Cienie — czarne plamy bez detali</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Odzyskanie<select id="q-shadows"><option value="">— nie określam —</option><option value="odzyskaj detale w zbyt ciemnych cieniach">Odzyskaj detale w cieniach</option><option value="rozjaśnij głębokie cienie pod oczami i na twarzy">Rozjaśnij cienie na twarzy</option></select></label></div>
 					</div>
-					<div class="form-section-label">Ogólne</div>
+					<div class="edit-section" id="qs-highlights" hidden>
+						<div class="gen-section-label">💥 Przepalone światła — białe plamy</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Odzyskanie<select id="q-highlights"><option value="">— nie określam —</option><option value="odzyskaj przepalone detale w jasnych partiach">Odzyskaj przepalone</option><option value="przyciemnij prześwietlone tło zachowując twarz">Przyciemnij tylko tło</option></select></label></div>
+					</div>
+					<div class="edit-section" id="qs-colorcast" hidden>
+						<div class="gen-section-label">🎨 Dominanta — nieprawidłowy odcień</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Typ dominanty<select id="q-colorcast"><option value="">— nie określam —</option><option value="usuń żółtą dominantę ze sztucznego oświetlenia">Żółta — sztuczne oświetlenie</option><option value="usuń zieloną dominantę z oświetlenia fluorescencyjnego">Zielona — jarzeniówki</option><option value="usuń niebieską dominantę z cienia lub zachmurzenia">Niebieska — cień / chmury</option><option value="usuń nieprawidłową dominantę kolorystyczną">Ogólna korekcja</option></select></label></div>
+					</div>
+					<div class="edit-section" id="qs-whitebal" hidden>
+						<div class="gen-section-label">⚖️ Balans bieli — kolory nienaturalne</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Korekta<select id="q-whitebal"><option value="">— nie określam —</option><option value="ocieplij — zdjęcie ma zbyt chłodne tony">Ocieplij — za zimne</option><option value="ochłodź — zdjęcie ma zbyt ciepłe tony">Ochłodź — za ciepłe</option><option value="zneutralizuj balans bieli">Zneutralizuj</option></select></label></div>
+					</div>
+					<div class="edit-section" id="qs-skintone" hidden>
+						<div class="gen-section-label">🫶 Kolor skóry — nienaturalny odcień cery</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Korekcja<select id="q-skintone"><option value="">— nie określam —</option><option value="przywróć naturalny kolor skóry bez przebarwień">Przywróć naturalny</option><option value="usuń czerwienienia i zaczerwienienia skóry">Usuń zaczerwienienia</option><option value="wyrównaj nierówny koloryt skóry">Wyrównaj koloryt</option></select></label></div>
+					</div>
+					<div class="edit-section" id="qs-skinretuch" hidden>
+						<div class="gen-section-label">✨ Retusz skóry — niedoskonałości</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Zakres<select id="q-skinretuch"><option value="">— nie określam —</option><option value="naturalny retusz — zachowaj pory i teksturę">Naturalny — zachowaj pory</option><option value="usuń cienie pod oczami zachowując teksturę">Tylko cienie pod oczami</option><option value="wygładź skórę bez efektu plastiku">Wygładzenie — bez plastiku</option></select></label></div>
+					</div>
+					<div class="edit-section" id="qs-horizon" hidden>
+						<div class="gen-section-label">📏 Horyzont — zdjęcie jest krzywe</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Wyprostowanie<select id="q-horizon"><option value="">— nie określam —</option><option value="tak">Wyprostuj krzywy horyzont</option></select></label></div>
+					</div>
+					<div class="edit-section" id="qs-perspective" hidden>
+						<div class="gen-section-label">📐 Perspektywa — zniekształcone linie</div>
+						<div class="form-grid"><label style="grid-column:1/-1">Typ<select id="q-perspective"><option value="">— nie określam —</option><option value="korekcja perspektywy z dołu — linie schodzą się u góry">Zdjęcie z dołu</option><option value="korekcja perspektywy z góry">Zdjęcie z góry</option><option value="korekcja beczkowatego zniekształcenia">Zniekształcenie szerokokątne</option></select></label></div>
+					</div>
+
+					<div class="gen-section-label" style="margin-top:16px">⚙️ Ogólne</div>
 					<div class="form-grid">
 						<label>Czego unikać<input id="q-avoid" type="text" value="efekt plastiku, przesadna obróbka" /></label>
 					</div>
 				</div>
 
 				<!-- OUTPUT -->
-				<div>
-					<p style="font-size:.8rem;opacity:.6;margin-bottom:1em">Prompt budowany automatycznie. Skopiuj i wklej do Gemini.</p>
+				<div style="padding-left:24px">
+					<p style="font-size:.75rem;opacity:.45;margin-bottom:12px;letter-spacing:.04em">Prompt budowany automatycznie</p>
 					<textarea id="prompt-output" class="gen-output" readonly></textarea>
-					<div style="display:flex;gap:10px;margin-top:1em;flex-wrap:wrap">
+					<div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
 						<button id="build-prompt" class="button primary" type="button">Odśwież</button>
 						<button id="copy-generated" class="button" type="button"><i class="fas fa-copy"></i> Kopiuj</button>
 					</div>
