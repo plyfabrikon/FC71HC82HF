@@ -497,6 +497,8 @@
 						<label class="check-chip"><input type="checkbox" value="colorgrade" onchange="updateEditSections()"><span>Paleta kolorów</span></label>
 						<label class="check-chip"><input type="checkbox" value="refresh" onchange="updateEditSections()"><span>Poprawa jakości</span></label>
 						<label class="check-chip"><input type="checkbox" value="remove" onchange="updateEditSections()"><span>Usuń elementy</span></label>
+						<label class="check-chip"><input type="checkbox" value="cropchange" onchange="updateEditSections()"><span>Zmiana kadru</span></label>
+						<label class="check-chip"><input type="checkbox" value="outfitseq" onchange="updateEditSections()"><span>Sekwencja strojów</span></label>
 					</div>
 
 					<div class="edit-section" id="es-bg" hidden>
@@ -762,6 +764,86 @@
 								<option value="rozmyciem bokeh">Rozmycie bokeh</option>
 								<option value="jednolitym tłem">Jednolite tło</option>
 							</select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-cropchange" hidden>
+						<div class="gen-section-label">📐 Zmiana kadru</div>
+						<div class="form-grid">
+							<label>Z kadru<select id="e-crop-from">
+								<option value="">— nie określam —</option>
+								<option value="ekstremalne zbliżenie samej twarzy">Ekstremalne zbliżenie — sama twarz</option>
+								<option value="zbliżenie twarzy — crop do podbródka">Zbliżenie — do podbródka</option>
+								<option value="portret do ramion">Do ramion</option>
+								<option value="ujęcie do pasa">Do pasa</option>
+								<option value="ujęcie od kolan w górę — trzy czwarte">Trzy czwarte</option>
+								<option value="cała postać">Cała postać</option>
+								<option value="szeroki plan — postać w otoczeniu">Szeroki plan</option>
+							</select></label>
+							<label>Do kadru<select id="e-crop-to">
+								<option value="">— nie określam —</option>
+								<option value="ekstremalne zbliżenie samej twarzy">Ekstremalne zbliżenie — sama twarz</option>
+								<option value="zbliżenie twarzy — crop do podbródka">Zbliżenie — do podbródka</option>
+								<option value="portret do ramion">Do ramion</option>
+								<option value="ujęcie do pasa">Do pasa</option>
+								<option value="ujęcie od kolan w górę — trzy czwarte">Trzy czwarte</option>
+								<option value="cała postać">Cała postać</option>
+								<option value="szeroki plan — postać w otoczeniu">Szeroki plan</option>
+							</select></label>
+						</div>
+						<div class="form-grid" style="margin-top:8px">
+							<label>Zmiana głębi ostrości<select id="e-crop-dof">
+								<option value="">— nie określam —</option>
+								<option value="przy szerszym kadrze rozmyj tło bardziej">Rozmyj tło przy szerszym kadrze</option>
+								<option value="przy bliższym kadrze zachowaj ostry detal twarzy">Wyostrz detale przy zbliżeniu</option>
+								<option value="głębia ostrości bez zmian">Bez zmian</option>
+							</select></label>
+						</div>
+					</div>
+
+					<div class="edit-section" id="es-outfitseq" hidden>
+						<div class="gen-section-label">👗 Sekwencja strojów</div>
+						<div class="form-grid">
+							<label style="grid-column:1/-1">Ile wersji stroju<select id="e-outfitseq-count">
+								<option value="2">2 wersje</option>
+								<option value="3">3 wersje</option>
+								<option value="4">4 wersje</option>
+							</select></label>
+							<label>Strój 1 — casual / dzienny<select id="e-outfitseq-1">
+								<option value="">— nie określam —</option>
+								<option value="casualowy strój dzienny — spodnie i luźna koszula w neutralnych kolorach">Casual codzienny</option>
+								<option value="casualowa sukienka midi w delikatny wzór">Sukienka midi casualowa</option>
+								<option value="strój athleisure — szerokie spodnie i dopasowany top">Athleisure</option>
+								<option value="jeans i biała koszula — klasyczny casual">Jeans + biała koszula</option>
+								<option value="streetwear — oversizowa bluza i cargo pants">Streetwear</option>
+							</select></label>
+							<label>Strój 2 — elegancki / biznesowy<select id="e-outfitseq-2">
+								<option value="">— nie określam —</option>
+								<option value="elegancki garnitur w kolorze antracytu z białą koszulą">Garnitur antracytowy</option>
+								<option value="power suit ecru — żakiet i dopasowane spodnie">Power suit ecru</option>
+								<option value="klasyczny czarny garnitur damski">Czarny garnitur damski</option>
+								<option value="elegancka sukienka koktajlowa midi">Sukienka koktajlowa</option>
+								<option value="turtleneck i dopasowane spodnie — minimalistyczny smart casual">Turtleneck + spodnie</option>
+							</select></label>
+							<label>Strój 3 — wieczorowy<select id="e-outfitseq-3">
+								<option value="">— nie określam —</option>
+								<option value="suknia wieczorowa z dekoltem halter w głębokiej czerwieni">Suknia wieczorowa czerwona</option>
+								<option value="czarna suknia wieczorowa z rozcięciem i odkrytymi plecami">Czarna suknia z rozcięciem</option>
+								<option value="suknia jedwabna w kolorze szampana">Suknia szampańska jedwabna</option>
+								<option value="mała czarna LBD — klasyczna sukienka poniżej kolan">Mała czarna (LBD)</option>
+								<option value="formalny smoking damski z muszką">Smoking damski</option>
+							</select></label>
+							<label>Strój 4 — dodatkowy<select id="e-outfitseq-4">
+								<option value="">— nie określam —</option>
+								<option value="sukienka boho z falbanami i haftami w ziemistych tonach">Boho z haftami</option>
+								<option value="strój sportowy — legginsy high waist i crop top">Sportowy / yoga</option>
+								<option value="vintage sukienka w grochy — lata 50.">Vintage lata 50.</option>
+								<option value="zwiewna sukienka lniana w kremowym kolorze">Lniana kremowa</option>
+								<option value="edytorialny komplet skórzany — ramoneska i spódnica midi">Skórzany edytorialny</option>
+							</select></label>
+						</div>
+						<div class="form-grid" style="margin-top:8px">
+							<label style="grid-column:1/-1">Co ma być identyczne w każdej wersji<input id="e-outfitseq-preserve" type="text" value="twarz, fryzura, tło, poza, oświetlenie" /></label>
 						</div>
 					</div>
 
