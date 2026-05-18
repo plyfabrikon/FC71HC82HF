@@ -156,7 +156,8 @@ function updateEditSections() {
         bg:'es-bg', light:'es-light', lens:'es-lens', weather:'es-weather',
         outfit:'es-outfit', hair:'es-hair', makeup:'es-makeup',
         style:'es-style', colorgrade:'es-colorgrade',
-        refresh:'es-refresh', remove:'es-remove'
+        refresh:'es-refresh', remove:'es-remove',
+        cropchange:'es-cropchange', outfitseq:'es-outfitseq'
     };
     Object.keys(map).forEach(function(key) {
         var el = document.getElementById(map[key]);
@@ -359,6 +360,28 @@ function buildPrompt() {
             var rw = gv('e-remove-what');
             var rf = gv('e-remove-fill');
             if (rw) changes.push('usuń z tła: ' + rw + (rf ? ', uzupełniając ' + rf : ''));
+        }
+        if (checked.indexOf('cropchange') !== -1) {
+            var cf = gv('e-crop-from');
+            var ct2 = gv('e-crop-to');
+            var dof = gv('e-crop-dof');
+            if (cf && ct2) {
+                changes.push('zmień kadr z "' + cf + '" na "' + ct2 + '"' + (dof ? ' — ' + dof : ''));
+            } else if (ct2) {
+                changes.push('zmień kadr na ' + ct2 + (dof ? ', ' + dof : ''));
+            }
+        }
+        if (checked.indexOf('outfitseq') !== -1) {
+            var count = gv('e-outfitseq-count') || '2';
+            var s1 = gv('e-outfitseq-1');
+            var s2 = gv('e-outfitseq-2');
+            var s3 = gv('e-outfitseq-3');
+            var s4 = gv('e-outfitseq-4');
+            var sp = gv('e-outfitseq-preserve') || 'twarz, fryzura, tło, poza';
+            var outfits = [s1, s2, s3, s4].filter(Boolean).slice(0, parseInt(count));
+            if (outfits.length > 0) {
+                changes.push('stwórz ' + outfits.length + ' wersje z różnymi strojami: ' + outfits.map(function(o, i) { return 'wersja ' + (i+1) + ': ' + o; }).join('; ') + ' — w każdej wersji zachowaj identyczne: ' + sp);
+            }
         }
 
         /* Złóż w naturalny akapit */
