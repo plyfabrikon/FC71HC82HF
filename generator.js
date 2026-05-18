@@ -220,32 +220,50 @@ function buildPrompt() {
         var crop    = gv('n-crop');
         var frame   = gv('n-frame');
         var effect  = gv('n-effect');
-        var level   = gv('n-detail') || 'medium';
         var avoid   = gv('n-avoid');
 
         if (!p.isPerson && crop && (crop.indexOf('twarz') !== -1 || crop.indexOf('postać') !== -1)) crop = null;
         if (!p.isPerson && frame && frame.indexOf('85') !== -1) frame = null;
 
-        var kadrowaInfo = [crop, frame].filter(Boolean).join(', ');
+        /* ── Narracyjny akapit ── */
+        var parts = [];
 
-        if (level === 'short') {
-            result = sentences(
-                'Wygeneruj: ' + subject + ', ' + scene + '.',
-                kadrowaInfo ? 'Kadr: ' + kadrowaInfo + '.' : null,
-                'Oświetlenie: ' + light + '. Styl: ' + style + '.',
-                avoid ? 'Unikaj: ' + avoid + '.' : null
-            );
+        /* Otwierające zdanie: temat + scena */
+        if (p.isPerson) {
+            parts.push('Stwórz fotografię ' + subject + ', ' + scene + '.');
+        } else if (p.isScene) {
+            parts.push('Stwórz fotografię wnętrza — ' + subject + ', ' + scene + '.');
         } else {
-            result = sentences(
-                'Wygeneruj: ' + subject + '.',
-                'Lokacja: ' + scene + '.',
-                kadrowaInfo ? 'Kadr: ' + kadrowaInfo + '.' : null,
-                'Oświetlenie: ' + light + '.',
-                'Styl: ' + style + '.',
-                effect ? 'Efekt: ' + effect + '.' : null,
-                avoid ? 'Unikaj: ' + avoid + '.' : null
-            );
+            parts.push('Stwórz fotografię produktu — ' + subject + ', ' + scene + '.');
         }
+
+        /* Oświetlenie i atmosfera */
+        if (light) {
+            parts.push('Zdjęcie wykonane ' + light + ', nadając scenie autentyczny, naturalny nastrój.');
+        }
+
+        /* Kadr i optyka */
+        var optics = [];
+        if (crop) optics.push(crop);
+        if (frame) optics.push(frame);
+        if (optics.length > 0) {
+            parts.push('Kompozycja: ' + optics.join(', ') + '.');
+        }
+
+        /* Efekt */
+        if (effect) {
+            parts.push('Efekt wizualny: ' + effect + ', dodający głębi i charakteru zdjęciu.');
+        }
+
+        /* Styl i realizm */
+        parts.push('Estetyka: ' + style + '. Realizm fotograficzny, naturalna tekstura i szczegóły.');
+
+        /* Unikaj */
+        if (avoid) {
+            parts.push('Unikaj: ' + avoid + '.');
+        }
+
+        result = parts.join(' ');
 
     } else if (currentMode === 'edit') {
         var checked = [];
@@ -258,123 +276,122 @@ function buildPrompt() {
             return;
         }
 
-        var level   = gv('e-detail') || 'medium';
-        var preserv = gv('e-preserve-all') || 'twarz, rysy, proporcje';
+        var preserv = gv('e-preserve-all') || 'twarz, rysy, proporcje ciała';
         var avoid   = gv('e-avoid-all');
-        var parts   = [];
+        var changes = [];
 
+        /* Zbierz wszystkie zmiany jako naturalne frazy */
         if (checked.indexOf('bg') !== -1) {
             var indoor  = gv('e-bg-indoor');
             var outdoor = gv('e-bg-outdoor');
-            var scene   = [indoor, outdoor].filter(Boolean).join(' + ');
-            if (scene) parts.push('Nowe tło: ' + scene + '.');
+            var bgParts = [indoor, outdoor].filter(Boolean);
+            if (bgParts.length > 0) changes.push('tło zmień na ' + bgParts.join(' lub '));
         }
         if (checked.indexOf('light') !== -1) {
             var src  = gv('e-light-source');
             var mood = gv('e-light-mood');
-            var ld   = [src, mood].filter(Boolean).join(', ');
-            if (ld) parts.push('Oświetlenie: ' + ld + '.');
+            var lparts = [src, mood].filter(Boolean);
+            if (lparts.length > 0) changes.push('oświetlenie na ' + lparts.join(', '));
         }
         if (checked.indexOf('lens') !== -1) {
             var focal = gv('e-lens-focal');
             var dof   = gv('e-lens-dof');
-            var od    = [focal, dof].filter(Boolean).join(', ');
-            if (od) parts.push('Optyka: ' + od + '.');
+            var lensP = [focal, dof].filter(Boolean);
+            if (lensP.length > 0) changes.push('optykę na ' + lensP.join(', '));
         }
         if (checked.indexOf('weather') !== -1) {
             var wx = gv('e-weather-type');
             var fx = gv('e-film-effect');
-            if (wx) parts.push('Efekt atmosferyczny: ' + wx + '.');
-            if (fx) parts.push('Efekt filmowy: ' + fx + '.');
+            if (wx) changes.push('dodaj efekt atmosferyczny: ' + wx);
+            if (fx) changes.push('efekt filmowy: ' + fx);
         }
         if (checked.indexOf('outfit') !== -1) {
-            var type  = gv('e-outfit-type');
-            var color = gv('e-outfit-color');
-            var od    = [type, color].filter(Boolean).join(' ');
-            parts.push(od ? 'Zmień strój na: ' + od + '.' : 'Zmień strój.');
+            var otype  = gv('e-outfit-type');
+            var ocolor = gv('e-outfit-color');
+            var oparts = [otype, ocolor].filter(Boolean);
+            if (oparts.length > 0) changes.push('strój zmień na ' + oparts.join(' '));
+            else changes.push('zmień strój');
         }
         if (checked.indexOf('hair') !== -1) {
             var hs = gv('e-hair-style');
             var hc = gv('e-hair-color');
-            if (hs) parts.push('Fryzura: ' + hs + '.');
-            if (hc) parts.push('Kolor włosów: ' + hc + '.');
-            if (!hs && !hc) parts.push('Zmień fryzurę.');
+            var hparts = [];
+            if (hs) hparts.push('fryzura: ' + hs);
+            if (hc) hparts.push('kolor włosów: ' + hc);
+            if (hparts.length > 0) changes.push(hparts.join(', '));
         }
         if (checked.indexOf('makeup') !== -1) {
             var mt = gv('e-makeup-type');
             var ml = gv('e-makeup-lips');
-            if (mt) parts.push('Makijaż: ' + mt + '.');
-            if (ml) parts.push('Usta: ' + ml + '.');
-            if (!mt && !ml) parts.push('Zmień makijaż.');
+            var mparts = [];
+            if (mt) mparts.push('makijaż: ' + mt);
+            if (ml) mparts.push('usta: ' + ml);
+            if (mparts.length > 0) changes.push(mparts.join(', '));
+            else changes.push('zmień makijaż');
         }
         if (checked.indexOf('style') !== -1) {
             var st = gv('e-style-target');
             var si = gv('e-style-intensity');
-            var sd = [st, si].filter(Boolean).join(', ');
-            if (sd) parts.push('Styl: ' + sd + '.');
+            var sparts = [st, si].filter(Boolean);
+            if (sparts.length > 0) changes.push('styl estetyczny na ' + sparts.join(', '));
         }
         if (checked.indexOf('colorgrade') !== -1) {
             var ct = gv('e-color-target');
             var ci = gv('e-color-intensity');
-            var cd = [ct, ci].filter(Boolean).join(', ');
-            if (cd) parts.push('Paleta kolorów: ' + cd + '.');
+            var cparts = [ct, ci].filter(Boolean);
+            if (cparts.length > 0) changes.push('paletę kolorów na ' + cparts.join(', '));
         }
         if (checked.indexOf('refresh') !== -1) {
-            var qparts = [];
-            var qs = gv('e-q-sharpness');   if (qs) qparts.push('wyostrzenie — ' + qs);
-            var qn = gv('e-q-noise');       if (qn) qparts.push('redukcja szumów — ' + qn);
-            var qe = gv('e-q-exposure');    if (qe) qparts.push('ekspozycja — ' + qe);
-            var qsh= gv('e-q-shadows');     if (qsh) qparts.push('cienie — ' + qsh);
-            var qhl= gv('e-q-highlights');  if (qhl) qparts.push('światła — ' + qhl);
-            var qc = gv('e-q-colorcast');   if (qc) qparts.push('dominanta — ' + qc);
-            var qw = gv('e-q-whitebal');    if (qw) qparts.push('balans bieli — ' + qw);
-            var qsk= gv('e-q-skintone');    if (qsk) qparts.push('kolor skóry — ' + qsk);
-            var qr = gv('e-q-skinretuch');  if (qr) qparts.push('retusz — ' + qr);
-            var qh = gv('e-q-horizon');     if (qh) qparts.push('horyzont');
-            var qp = gv('e-q-perspective'); if (qp) qparts.push('perspektywa — ' + qp);
-            if (qparts.length > 0) {
-                parts.push('Popraw jakość: ' + qparts.join('; ') + '.');
-                parts.push('Zachowaj naturalny wygląd — bez efektu plastiku.');
-            } else {
-                parts.push('Popraw ogólną jakość i ostrość.');
-            }
+            var qlist = [];
+            var qs2 = gv('e-q-sharpness');  if (qs2) qlist.push(qs2);
+            var qn2 = gv('e-q-noise');      if (qn2) qlist.push(qn2);
+            var qe2 = gv('e-q-exposure');   if (qe2) qlist.push(qe2);
+            var qsh2= gv('e-q-shadows');    if (qsh2) qlist.push(qsh2);
+            var qhl2= gv('e-q-highlights'); if (qhl2) qlist.push(qhl2);
+            var qc2 = gv('e-q-colorcast');  if (qc2) qlist.push(qc2);
+            var qw2 = gv('e-q-whitebal');   if (qw2) qlist.push(qw2);
+            var qsk2= gv('e-q-skintone');   if (qsk2) qlist.push(qsk2);
+            var qr2 = gv('e-q-skinretuch'); if (qr2) qlist.push(qr2);
+            if (qlist.length > 0) changes.push('popraw jakość: ' + qlist.join(', '));
+            else changes.push('popraw ogólną jakość i ostrość');
         }
         if (checked.indexOf('remove') !== -1) {
             var rw = gv('e-remove-what');
             var rf = gv('e-remove-fill');
-            if (rw) parts.push('Usuń: ' + rw + '.');
-            if (rf) parts.push('Uzupełnij: ' + rf + '.');
+            if (rw) changes.push('usuń z tła: ' + rw + (rf ? ', uzupełniając ' + rf : ''));
         }
 
-        result = sentences.apply(null,
-            ['Zachowaj: ' + preserv + '.']
-            .concat(parts)
-            .concat([avoid ? 'Unikaj: ' + avoid + '.' : null])
-        );
+        /* Złóż w naturalny akapit */
+        if (changes.length === 0) {
+            result = 'Wybierz opcje które chcesz zmienić.';
+        } else if (changes.length === 1) {
+            result = 'Użyj przesłanego zdjęcia jako punktu odniesienia. Zachowaj dokładnie bez zmian: ' + preserv + '. ' + changes[0].charAt(0).toUpperCase() + changes[0].slice(1) + '. Wszystkie przejścia muszą wyglądać naturalnie i fotorealistycznie.' + (avoid ? ' Unikaj: ' + avoid + '.' : '');
+        } else {
+            var last = changes.pop();
+            result = 'Użyj przesłanego zdjęcia jako punktu odniesienia. Zachowaj dokładnie bez zmian: ' + preserv + '. Zmień następujące elementy: ' + changes.join(', ') + ' oraz ' + last + '. Wszystkie przejścia i zmiany muszą wyglądać naturalnie — fotorealistyczna spójność oświetlenia, cieni i detali.' + (avoid ? ' Unikaj: ' + avoid + '.' : '');
+        }
 
     } else if (currentMode === 'quality') {
-        var qparts = [];
-        var qs  = gv('q-sharpness');   if (qs)  qparts.push('wyostrzenie — ' + qs);
-        var qn  = gv('q-noise');       if (qn)  qparts.push('redukcja szumów — ' + qn);
-        var qe  = gv('q-exposure');    if (qe)  qparts.push('ekspozycja — ' + qe);
-        var qsh = gv('q-shadows');     if (qsh) qparts.push('cienie — ' + qsh);
-        var qhl = gv('q-highlights');  if (qhl) qparts.push('światła — ' + qhl);
-        var qc  = gv('q-colorcast');   if (qc)  qparts.push('dominanta — ' + qc);
-        var qw  = gv('q-whitebal');    if (qw)  qparts.push('balans bieli — ' + qw);
-        var qsk = gv('q-skintone');    if (qsk) qparts.push('kolor skóry — ' + qsk);
-        var qr  = gv('q-skinretuch');  if (qr)  qparts.push('retusz — ' + qr);
-        var qh  = gv('q-horizon');     if (qh)  qparts.push('wyprostowanie horyzontu');
-        var qp  = gv('q-perspective'); if (qp)  qparts.push('perspektywa — ' + qp);
-        var av  = gv('q-avoid');
+        var qlist2 = [];
+        var qs3  = gv('q-sharpness');   if (qs3)  qlist2.push(qs3);
+        var qn3  = gv('q-noise');       if (qn3)  qlist2.push(qn3);
+        var qe3  = gv('q-exposure');    if (qe3)  qlist2.push(qe3);
+        var qsh3 = gv('q-shadows');     if (qsh3) qlist2.push(qsh3);
+        var qhl3 = gv('q-highlights');  if (qhl3) qlist2.push(qhl3);
+        var qc3  = gv('q-colorcast');   if (qc3)  qlist2.push(qc3);
+        var qw3  = gv('q-whitebal');    if (qw3)  qlist2.push(qw3);
+        var qsk3 = gv('q-skintone');    if (qsk3) qlist2.push(qsk3);
+        var qr3  = gv('q-skinretuch');  if (qr3)  qlist2.push(qr3);
+        var qh3  = gv('q-horizon');     if (qh3)  qlist2.push('wyprostowanie horyzontu');
+        var qp3  = gv('q-perspective'); if (qp3)  qlist2.push(qp3);
+        var av   = gv('q-avoid');
 
-        if (qparts.length === 0) {
+        if (qlist2.length === 0) {
             result = 'Wybierz parametry które chcesz poprawić.';
         } else {
-            result = sentences(
-                'Popraw jakość zdjęcia: ' + qparts.join('; ') + '.',
-                'Zachowaj naturalny wygląd — bez efektu plastiku i przesadnej obróbki.',
-                av ? 'Unikaj: ' + av + '.' : null
-            );
+            var last2 = qlist2.pop();
+            var listStr = qlist2.length > 0 ? qlist2.join(', ') + ' oraz ' + last2 : last2;
+            result = 'Popraw to zdjęcie dbając szczególnie o: ' + listStr + '. Zachowaj naturalny wygląd — skóra powinna mieć widoczną teksturę i pory, żadnego efektu plastiku ani przesadnego wygładzenia.' + (av ? ' Unikaj: ' + av + '.' : '');
         }
     }
 
